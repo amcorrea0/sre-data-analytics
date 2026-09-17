@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<title>SETI · Quiz — SRE Data Analytics</title>
+<link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/registration.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="brand"><div class="logo">S</div> SETI · SRE Data Analytics</div>
+    <div class="links">
+      <a href="index.html">Inicio</a>
+      
+      <a href="game.html">Game</a>
+      <a class="active" href="quiz.html">Quiz</a>
+      
+      
+    </div>
+    <a class="cta" href="game.html">Modo game →</a>
+  </div>
+    <a class="cta reg-nav-btn" href="#" onclick="event.preventDefault();window.__SETI__.openModal();" id="__SETI_OPEN_REG__">· Registrarme</a>
+</nav>
+
+<header class="hero" style="padding: 56px 28px 64px;">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span> Modo quiz libre</span>
+    <h1>8 preguntas. <span class="accent">Tu nivel.</span></h1>
+    <p class="lede">Sin gates, sin labs: responde en cualquier orden y mira tu rúbrica final.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#q1">Empezar</a>
+      <a class="btn btn-ghost" href="game.html">Modo game (gated)</a>
+    </div>
+  </div>
+</header>
+
+<section class="block" style="padding-top:32px;">
+  <div class="wrap">
+    <div class="learn-card" style="display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
+      <div style="flex:1; min-width:240px;">
+        <div class="bar-wrap" style="margin-bottom:8px;">
+          <div class="label">Progreso</div>
+          <div class="progress" style="flex:1;"><span id="bar" style="width:0%"></span></div>
+          <div><strong id="ptext">0 / 8</strong></div>
+        </div>
+        <div class="bar-wrap">
+          <div class="label">XP</div>
+          <div class="progress" style="flex:1;"><span id="xpbar" style="width:0%"></span></div>
+          <div><strong id="xptext">0</strong></div>
+        </div>
+      </div>
+      <div><span class="chip ink" id="level">Nivel 0 · Aprendiz</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" style="padding-top:32px;">
+  <div class="wrap">
+    <form id="quiz">
+
+      <div class="qcard" data-q="q1" data-lab="lab1" data-correct="b" data-xp="80">
+        <h3>1 · Lab 1 — Observabilidad</h3>
+        <p class="qmeta">Diagnóstico y outliers</p>
+        <p>En un heatmap de NaN con seaborn, ¿qué patrón indica <strong>datos faltantes sistemáticos</strong> (no aleatorios)?</p>
+        <label class="opt" data-v="a"><input type="radio" name="q1" value="a" hidden><span class="ltr">A</span> Puntos dispersos sin patrón.</label>
+        <label class="opt" data-v="b"><input type="radio" name="q1" value="b" hidden><span class="ltr">B</span> Bandas horizontales o verticales continuas.</label>
+        <label class="opt" data-v="c"><input type="radio" name="q1" value="c" hidden><span class="ltr">C</span> Solo aparece NaN en columnas numéricas.</label>
+        <label class="opt" data-v="d"><input type="radio" name="q1" value="d" hidden><span class="ltr">D</span> El heatmap no sirve para detectar NaN.</label>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="qcard" data-q="q2" data-lab="lab1" data-correct="c" data-xp="80">
+        <h3>2 · Lab 1 — Observabilidad</h3>
+        <p class="qmeta">Limpieza</p>
+        <p>¿Por qué la <strong>mediana</strong> es mejor que la media para imputar <code>latency_ms</code>?</p>
+        <label class="opt" data-v="a"><input type="radio" name="q2" value="a" hidden><span class="ltr">A</span> Porque es más rápida de calcular.</label>
+        <label class="opt" data-v="b"><input type="radio" name="q2" value="b" hidden><span class="ltr">B</span> Porque siempre es menor que la media.</label>
+        <label class="opt" data-v="c"><input type="radio" name="q2" value="c" hidden><span class="ltr">C</span> Porque es robusta a outliers y a errores técnicos.</label>
+        <label class="opt" data-v="d"><input type="radio" name="q2" value="d" hidden><span class="ltr">D</span> Porque es robusta a NaN en otras columnas.</label>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="qcard" data-q="q3" data-lab="lab2" data-correct="a" data-xp="100">
+        <h3>3 · Lab 2 — Automatización</h3>
+        <p class="qmeta">Boxplot en escala log</p>
+        <p>Si ves puntos solo <strong>arriba</strong> del bigote superior en <code>duration_sec</code>, indica:</p>
+        <label class="opt" data-v="a"><input type="radio" name="q3" value="a" hidden><span class="ltr">A</span> Jobs lentos reales: candidato a optimizar.</label>
+        <label class="opt" data-v="b"><input type="radio" name="q3" value="b" hidden><span class="ltr">B</span> Jobs normales.</label>
+        <label class="opt" data-v="c"><input type="radio" name="q3" value="c" hidden><span class="ltr">C</span> Datos corruptos del exporter.</label>
+        <label class="opt" data-v="d"><input type="radio" name="q3" value="d" hidden><span class="ltr">D</span> El job nunca falla.</label>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="qcard" data-q="q4" data-lab="lab2" data-correct="d" data-xp="100">
+        <h3>4 · Lab 2 — Automatización</h3>
+        <p class="qmeta">MTTR</p>
+        <p>El <strong>MTTR</strong> de un job se calcula como…</p>
+        <label class="opt" data-v="a"><input type="radio" name="q4" value="a" hidden><span class="ltr">A</span> Media de duración de runs exitosos.</label>
+        <label class="opt" data-v="b"><input type="radio" name="q4" value="b" hidden><span class="ltr">B</span> p99 de todas las duraciones.</label>
+        <label class="opt" data-v="c"><input type="radio" name="q4" value="c" hidden><span class="ltr">C</span> Suma de retries / total de runs.</label>
+        <label class="opt" data-v="d"><input type="radio" name="q4" value="d" hidden><span class="ltr">D</span> Mediana de duración cuando status es failed/timeout.</label>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="qcard" data-q="q5" data-lab="lab3" data-correct="c" data-xp="120">
+        <h3>5 · Lab 3 — Tickets</h3>
+        <p class="qmeta">Errores técnicos vs outliers de negocio</p>
+        <p>En <code>tickets.csv</code> aparecen <code>resolution_min &lt;= 0</code>. ¿Qué haces?</p>
+        <label class="opt" data-v="a"><input type="radio" name="q5" value="a" hidden><span class="ltr">A</span> Imputar con la media.</label>
+        <label class="opt" data-v="b"><input type="radio" name="q5" value="b" hidden><span class="ltr">B</span> Dejarlos: outliers de negocio.</label>
+        <label class="opt" data-v="c"><input type="radio" name="q5" value="c" hidden><span class="ltr">C</span> Dropearlos: errores técnicos (no son tiempos válidos).</label>
+        <label class="opt" data-v="d"><input type="radio" name="q5" value="d" hidden><span class="ltr">D</span> Convertirlos a NaN e imputar luego.</label>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="qcard" data-q="q6" data-lab="lab3" data-correct="b" data-xp="120">
+        <h3>6 · Lab 3 — Tickets</h3>
+        <p class="qmeta">Escala</p>
+        <p>¿Por qué usamos <strong>escala log</strong> en el boxplot de <code>resolution_min</code> por equipo?</p>
+        <label class="opt" data-v="a"><input type="radio" name="q6" value="a" hidden><span class="ltr">A</span> Las medianas son iguales.</label>
+        <label class="opt" data-v="b"><input type="radio" name="q6" value="b" hidden><span class="ltr">B</span> Distribución muy asimétrica: minutos y días conviven.</label>
+        <label class="opt" data-v="c"><input type="radio" name="q6" value="c" hidden><span class="ltr">C</span> El CSV pesa menos.</label>
+        <label class="opt" data-v="d"><input type="radio" name="q6" value="d" hidden><span class="ltr">D</span> No es útil, mejor usar escala lineal.</label>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="qcard" data-q="q7" data-lab="lab4" data-correct="c" data-xp="150">
+        <h3>7 · Lab 4 — Dashboard ejecutivo</h3>
+        <p class="qmeta">Headline</p>
+        <p>Una buena headline ejecutiva de 1 línea debe incluir:</p>
+        <label class="opt" data-v="a"><input type="radio" name="q7" value="a" hidden><span class="ltr">A</span> Un párrafo con todas las métricas del mes.</label>
+        <label class="opt" data-v="b"><input type="radio" name="q7" value="b" hidden><span class="ltr">B</span> 1 cifra + 1 ventana de tiempo.</label>
+        <label class="opt" data-v="c"><input type="radio" name="q7" value="c" hidden><span class="ltr">C</span> 1 cifra + 1 responsable + 1 ventana de tiempo + 1 acción priorizada.</label>
+        <label class="opt" data-v="d"><input type="radio" name="q7" value="d" hidden><span class="ltr">D</span> Una lista de tickets abiertos.</label>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="qcard" data-q="q8" data-lab="lab4" data-correct="b" data-xp="150">
+        <h3>8 · Lab 4 — Dashboard ejecutivo</h3>
+        <p class="qmeta">Priorización</p>
+        <p>¿Para qué sirve el score <strong>RICE</strong> en el dashboard?</p>
+        <label class="opt" data-v="a"><input type="radio" name="q8" value="a" hidden><span class="ltr">A</span> Reemplazar el boxplot.</label>
+        <label class="opt" data-v="b"><input type="radio" name="q8" value="b" hidden><span class="ltr">B</span> Priorizar acciones: <code>(Reach × Impact) / Effort</code>.</label>
+        <label class="opt" data-v="c"><input type="radio" name="q8" value="c" hidden><span class="ltr">C</span> Calcular disponibilidad mensual.</label>
+        <label class="opt" data-v="d"><input type="radio" name="q8" value="d" hidden><span class="ltr">D</span> Estimar p95 de latencia.</label>
+        <div class="feedback"></div>
+      </div>
+
+      <div style="display:flex; gap:10px; margin: 24px 0;">
+        <button type="button" id="submit" class="btn btn-primary">Ver resultado</button>
+        <button type="button" id="reset"  class="btn btn-ghost" style="color:var(--ink-1); border-color:var(--grey-4); background:var(--paper);">Reiniciar</button>
+      </div>
+
+      <div class="learn-card" id="score-card" style="display:none;">
+        <h3>Tu resultado</h3>
+        <p id="score-line" style="font-size:1.2rem;"></p>
+        <div class="badge-row" id="rubric"></div>
+      </div>
+    </form>
+
+    <details style="margin-top: 24px;">
+      <summary><strong>Mostrar respuestas correctas y explicaciones</strong></summary>
+      <ol>
+        <li><b>1B</b> — Bandas = patrón sistemático.</li>
+        <li><b>2C</b> — La mediana no se mueve con outliers.</li>
+        <li><b>3A</b> — Solo arriba = outlier real unilateral.</li>
+        <li><b>4D</b> — MTTR = mediana en runs fallidos.</li>
+        <li><b>5C</b> — Tiempos ≤ 0 no son válidos: drop + bug del exporter.</li>
+        <li><b>6B</b> — Cola larga ⇒ log.</li>
+        <li><b>7C</b> — Cifra + responsable + ventana + acción.</li>
+        <li><b>8B</b> — RICE prioriza donde invertir esfuerzo.</li>
+      </ol>
+    </details>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div>SETI · SRE Data Analytics · blanco + grises + rojos</div>
+    <div><a href="index.html">Inicio</a></div>
+  </div>
+</footer>
+
+<script>
+const EXPLAIN = {
+  q1: 'Bandas verticales/horizontales continuas = mismo origen (sensor, exportador, batch).',
+  q2: 'La mediana no se mueve con outliers ni con errores técnicos.',
+  q3: 'Outliers unilaterales arriba = picos reales (no datos malos).',
+  q4: 'MTTR = mediana de duración de runs fallidos/timeout.',
+  q5: 'Tiempos ≤ 0 no son válidos: drop + bug del exporter.',
+  q6: 'La cola larga (minutos → días) sólo se ve en escala log.',
+  q7: 'Cifra + responsable + ventana + acción = la regla de la headline ejecutiva.',
+  q8: 'RICE prioriza donde invertir esfuerzo primero.'
+};
+
+let xp = 0, answered = 0;
+const total = 8;
+const XP_TOTAL = 900; // 80+80+100+100+120+120+150+150
+function paintProgress() {
+  const pct = Math.round(100 * answered / total);
+  document.getElementById('bar').style.width = pct + '%';
+  document.getElementById('ptext').textContent = answered + ' / ' + total;
+  document.getElementById('xpbar').style.width = Math.min(100, 100 * xp / XP_TOTAL) + '%';
+  document.getElementById('xptext').textContent = xp + ' / ' + XP_TOTAL + ' XP';
+  const lvl = xp >= 700 ? 'Nivel 4 · Storyteller'
+            : xp >= 500 ? 'Nivel 3 · Wrangler'
+            : xp >= 300 ? 'Nivel 2 · Specialist'
+            : xp >= 100 ? 'Nivel 1 · Hunter'
+            : 'Nivel 0 · Aprendiz';
+  document.getElementById('level').textContent = lvl;
+}
+
+document.querySelectorAll('.qcard[data-q]').forEach(card => {
+  card.addEventListener('change', (e) => {
+    const qid = card.dataset.q; const selInput = card.querySelector(`input[name="${qid}"]:checked`); if (!selInput) return;
+    card.querySelectorAll('.opt').forEach(o => o.classList.remove('sel','right','wrong'));
+    selInput.parentElement.classList.add('sel');
+    const correct = card.dataset.correct;
+    const chosen = selInput.value;
+    card.querySelector(`.opt[data-v="${chosen}"]`).classList.add(chosen === correct ? 'right' : 'wrong');
+    if (chosen !== correct) card.querySelector(`.opt[data-v="${correct}"]`).classList.add('right');
+    const fb = card.querySelector('.feedback');
+    fb.className = 'feedback show ' + (chosen === correct ? 'ok' : 'bad');
+    fb.textContent = EXPLAIN[card.dataset.q];
+    if (!card.dataset.done) {
+      card.dataset.done = '1';
+      answered++;
+      if (chosen === correct) xp += +card.dataset.xp;
+      paintProgress();
+    }
+  });
+});
+
+document.getElementById('submit').addEventListener('click', () => {
+  const card = document.getElementById('score-card');
+  card.style.display = 'block';
+  const pct = Math.round(100 * xp / 900);
+  const ok  = document.querySelectorAll('.qcard[data-correct]:not(:has(input:not(:checked)))').length;
+  document.getElementById('score-line').innerHTML =
+    `Respondiste <strong>${answered}/${total}</strong> preguntas · <strong>${xp} XP</strong> (${pct}%).`;
+  const lvl = xp >= 700 ? {n:'Storyteller', desc:'Listo para producción', chip:'red'}
+            : xp >= 500 ? {n:'Wrangler',    desc:'Casi listo, repite el lab 4', chip:'ink'}
+            : xp >= 300 ? {n:'Specialist',  desc:'Vuelve a los labs guiados',  chip:'ink'}
+            :             {n:'Aprendiz',    desc:'Agenda 1:1 con el facilitador', chip:'ghost'};
+  document.getElementById('rubric').innerHTML =
+    `<span class="chip ${lvl.chip}">${lvl.n}</span>
+     <span class="chip ghost">${lvl.desc}</span>`;
+  card.scrollIntoView({behavior:'smooth'});
+});
+
+document.getElementById('reset').addEventListener('click', () => {
+  document.querySelectorAll('input[type=radio]').forEach(i => i.checked = false);
+  document.querySelectorAll('.opt').forEach(o => o.classList.remove('sel','right','wrong'));
+  document.querySelectorAll('.feedback').forEach(f => { f.className='feedback'; f.textContent=''; });
+  document.querySelectorAll('.qcard[data-q]').forEach(c => delete c.dataset.done);
+  document.getElementById('score-card').style.display = 'none';
+  xp = 0; answered = 0; paintProgress();
+});
+</script>
+
+  <script src="assets/registration.js" defer></script>
+
+<script>
+(function(){
+  if (!window.__SETI__) return;
+  var KEY = 'seti-sre-quiz-quiz';
+  var ans = {};
+  try { ans = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e){}
+  function save(){
+    try { localStorage.setItem(KEY, JSON.stringify(ans)); } catch(e){}
+  }
+  document.querySelectorAll('.qcard[data-q]').forEach(function(card){
+    card.addEventListener('change', function(e){
+      var qid = card.dataset.q;
+      var inp = card.querySelector('input[name="'+qid+'"]:checked');
+      if (!inp) return;
+      ans[qid] = {
+        chosen: inp.value,
+        correct: card.dataset.correct,
+        correct_chosen: inp.value === card.dataset.correct,
+        at: new Date().toISOString()
+      };
+      save();
+    });
+  });
+  // re-pintar respuestas previas al cargar
+  document.querySelectorAll('.qcard[data-q]').forEach(function(card){
+    var qid = card.dataset.q; var a = ans[qid]; if (!a) return;
+    var inp = card.querySelector('input[name="'+qid+'"][value="'+a.chosen+'"]');
+    if (inp) { inp.checked = true; inp.parentElement.classList.add(a.correct_chosen ? 'right' : 'wrong'); }
+    var corr = card.querySelector('.opt[data-v="'+a.correct+'"]');
+    if (corr) corr.classList.add('right');
+  });
+})();
+</script>
+
+</body>
+</html>

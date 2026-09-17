@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 1 — Guía del estudiante — SETI · SRE Data Analytics</title>
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  /* prose-page solo para el contenido renderizado */
+  .prose-page { max-width: 920px; margin: 0 auto; padding: 56px 28px 96px; }
+  .prose-page h1 { font-size: clamp(2rem, 4vw, 2.8rem); margin: 0 0 8px; letter-spacing: -.02em; }
+  .prose-page > p { color: var(--grey-2); margin: 4px 0 0; max-width: 720px; }
+  .prose-page h2 { font-size: 1.4rem; margin-top: 36px; border-bottom: 1px solid var(--grey-5); padding-bottom: 6px; }
+  .prose-page h3 { font-size: 1.12rem; margin-top: 28px; color: var(--red-7); }
+  .prose-page h1 + h2 { margin-top: 32px; }
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+<div class="brand"><div class="logo">S</div> SETI · SRE Data Analytics</div>
+<div class="links">
+<a href="../../index.html">Inicio</a>
+<a href="../../index.html">Misiones</a>
+<a href="../../game.html">Game</a>
+<a href="../../quiz.html">Quiz</a>
+</div>
+<a class="cta" href="../../index.html">Empezar</a>
+</div></nav>
+<header class="hero" style="padding: 56px 28px 56px;">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span> Misión 1 · Guiado · 12 min</span>
+    <h1>Lab 1 — Guía del estudiante</h1>
+    
+  </div>
+</header>
+<article class="prose-page">
+<h1 id="lab-1-observabilidad-etl-estadistica-outliers-guiado">Lab 1 — Observabilidad: ETL + estadística + outliers (guiado)</h1>
+<h2 id="datos-faltantes-y-como-arreglarlos">Datos faltantes y cómo arreglarlos</h2>
+<table>
+<thead>
+<tr>
+<th>Columna</th>
+<th>Problema</th>
+<th>Tratamiento aplicado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>latency_ms</code></td>
+<td>~0.3% NaN + <strong>0.5%</strong> con valores <code>&lt; 0</code></td>
+<td>drop errores técnicos (físicamente imposibles), imputar NaN con <strong>mediana</strong> del servicio</td>
+</tr>
+<tr>
+<td><code>cpu_pct</code></td>
+<td>~0.2% NaN + <strong>0.2%</strong> con valores <code>&gt; 100</code></td>
+<td>drop errores técnicos, imputar NaN con <strong>mediana</strong></td>
+</tr>
+<tr>
+<td><code>error_rate</code></td>
+<td>OK, ya acotado [0, 1]</td>
+<td>sin cambios</td>
+</tr>
+<tr>
+<td><code>ts</code>, <code>service</code>, <code>region</code>, <code>env</code></td>
+<td>OK</td>
+<td>sin cambios</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Por qué mediana y no media: la mediana es <strong>robusta a outliers</strong>. En <code>latency_ms</code> hay picos
+de incidentes reales (~600 ms) y valores negativos basura. La mediana no se mueve con
+ninguno de los dos extremos.</p>
+</blockquote>
+<h2 id="figuras-y-como-interpretarlas">Figuras y cómo interpretarlas</h2>
+<ol>
+<li><strong><code>fig1_nan.png</code></strong> — Heatmap amarillo/verde de NaN. Bandas horizontales delatan inyector.</li>
+<li><strong><code>fig2_latency_dist.png</code></strong> — Histograma+KDE crudo vs limpio + líneas media/mediana.
+   En "crudo" la cola izquierda negativa revela errores técnicos; en "limpio" la media se
+   acerca a la mediana.</li>
+<li><strong><code>fig3_boxplot.png</code></strong> — Latencia por servicio (eje log). <strong>Puntos arriba del bigote
+   = outliers Tukey</strong> (Q3 + 1.5 × IQR). Outliers simétricos arriba y abajo suelen ser
+   dato malo; outliers <strong>solo arriba</strong> suelen ser <strong>incidentes</strong>.</li>
+<li><strong><code>fig4_outliers_per_service.png</code></strong> — Conteo de outliers Tukey por servicio. Nos dice
+   <strong>dónde duele</strong>.</li>
+</ol>
+<h2 id="regla-de-tukey-iqr">Regla de Tukey (IQR)</h2>
+<p>Para una métrica numérica:
+- Q1 = percentil 25, Q3 = percentil 75, IQR = Q3 − Q1.
+- <strong>Outlier alto</strong> si valor &gt; Q3 + 1.5·IQR.
+- <strong>Outlier bajo</strong> si valor &lt; Q1 − 1.5·IQR.</p>
+<p>Se aplica <strong>por grupo</strong> (servicio), no sobre todo el dataset, porque cada servicio tiene su
+propia escala.</p>
+<h2 id="discusion">Discusión</h2>
+<ul>
+<li>¿Por qué p95 &gt; media para alertar latencia?</li>
+<li>¿Cómo se traduce <code>error_rate</code> promedio mensual a disponibilidad?</li>
+<li>Outlier = incidente real o sensor roto? Cómo decidir.</li>
+</ul>
+</article>
+<footer class="site">
+<div class="wrap">
+<div>SETI · SRE Data Analytics · blanco + grises + rojos</div>
+<div><a href="../../index.html">Inicio</a></div>
+</div></footer>
+</body>
+</html>

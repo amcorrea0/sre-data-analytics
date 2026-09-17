@@ -1,0 +1,28 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+*.egg-info/
+.mypy_cache/
+
+# Logs regenerables (seed=42) - los CSV SI se commitean
+data/_generate.log
+
+# HTML renderizados - regenerables con `python notebooks/build_notebooks.py`
+# Si prefieres regenerarlos en vez de trackearlos, descomenta las 2 lineas siguientes:
+# html/lab*_*.html
+# html/lab*_fig*.png
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+_backup_*/

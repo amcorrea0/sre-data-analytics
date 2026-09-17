@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facilitador — guía operativa — SETI · SRE Data Analytics</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  /* prose-page solo para el contenido renderizado */
+  .prose-page { max-width: 920px; margin: 0 auto; padding: 56px 28px 96px; }
+  .prose-page h1 { font-size: clamp(2rem, 4vw, 2.8rem); margin: 0 0 8px; letter-spacing: -.02em; }
+  .prose-page > p { color: var(--grey-2); margin: 4px 0 0; max-width: 720px; }
+  .prose-page h2 { font-size: 1.4rem; margin-top: 36px; border-bottom: 1px solid var(--grey-5); padding-bottom: 6px; }
+  .prose-page h3 { font-size: 1.12rem; margin-top: 28px; color: var(--red-7); }
+  .prose-page h1 + h2 { margin-top: 32px; }
+</style>
+  <link rel="stylesheet" href="../assets/registration.css">
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+<div class="brand"><div class="logo">S</div> SETI · SRE Data Analytics</div>
+<div class="links">
+<a href="../index.html">Inicio</a>
+<a href="../index.html">Misiones</a>
+<a href="../game.html">Game</a>
+<a href="../quiz.html">Quiz</a>
+</div>
+<a class="cta" href="../index.html">Empezar</a>
+</div>    <a class="cta reg-nav-btn" href="#" onclick="event.preventDefault();window.__SETI__.openModal();" id="__SETI_OPEN_REG__">· Registrarme</a>
+</nav>
+<header class="hero" style="padding: 56px 28px 56px;">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span> Para quien conduce la sesión</span>
+    <h1>Facilitador — guía operativa</h1>
+    <p class="lede">Agenda cronometrada, prompts de discusión y señales de éxito.</p>
+  </div>
+</header>
+<article class="prose-page">
+<h1 id="guia-del-facilitador-sesion-de-60-minutos">Guía del facilitador — Sesión de 60 minutos</h1>
+<h2 id="agenda-cronometrada">Agenda (cronometrada)</h2>
+<table>
+<thead>
+<tr>
+<th>Min</th>
+<th>Bloque</th>
+<th>Quien conduce</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–5</td>
+<td>Bienvenida + setup</td>
+<td>Facilitador</td>
+<td><code>README.md</code> (venv + generate_data)</td>
+</tr>
+<tr>
+<td>5–17</td>
+<td><strong>Lab 1</strong> Observabilidad (guiado)</td>
+<td>Facilitador</td>
+<td><code>lab1_observabilidad.ipynb</code> (4 figuras)</td>
+</tr>
+<tr>
+<td>17–29</td>
+<td><strong>Lab 2</strong> Automatización (guiado)</td>
+<td>Facilitador</td>
+<td><code>lab2_automatizacion.ipynb</code> (5 figuras)</td>
+</tr>
+<tr>
+<td>29–41</td>
+<td><strong>Lab 3</strong> Tickets (hands-on)</td>
+<td>SREs</td>
+<td><code>lab3_requerimientos.ipynb</code> (6 figuras)</td>
+</tr>
+<tr>
+<td>41–53</td>
+<td><strong>Lab 4</strong> Dashboard ejecutivo</td>
+<td>SREs</td>
+<td><code>lab4_ejecutivo.ipynb</code> (3 + RICE)</td>
+</tr>
+<tr>
+<td>53–60</td>
+<td>Cierre + insights compartidos</td>
+<td>Grupo</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h2 id="antes-de-la-sesion-t-24h">Antes de la sesión (T-24h)</h2>
+<ul>
+<li>[ ] Regenerar datos si la fecha cambió: <code>python notebooks\generate_data.py</code>.</li>
+<li>[ ] Renderizar HTML (las figuras PNG se exportan a <code>html/</code>).</li>
+<li>[ ] Compartir a los SREs: <code>README.md</code> + los 4 READMEs en <code>labs/lab-0X-*/README.md</code>.</li>
+<li>[ ] Confirmar <code>.venv</code> activado y notebooks abiertos (los PNGs ya están en pantalla).</li>
+<li>[ ] Si la red esta lenta, copiar <code>pip install</code> a un script local pre-descargado.</li>
+</ul>
+<h2 id="como-correr-los-labs-guiados">Cómo correr los labs <strong>guiados</strong></h2>
+<ol>
+<li>Proyectar tu pantalla en Jupyter (zoom 125%). Las figuras se ven bien en pantalla completa.</li>
+<li>Hacer cada celda en vivo y <strong>explicar el por que</strong> antes del como:</li>
+<li>Por que <strong>mediana</strong> y no media para imputar.</li>
+<li>Por que <strong>escala log</strong> en boxplots de latencia / duracion.</li>
+<li>Por que <strong>IQR por grupo</strong> y no global.</li>
+<li>Antes de pasar al siguiente lab, pedir a 2 SREs que repitan la ultima celda en su notebook.</li>
+</ol>
+<h2 id="como-correr-los-labs-hands-on">Cómo correr los labs <strong>hands-on</strong></h2>
+<ol>
+<li>Enunciar el objetivo y dar 60 s de lectura del README del lab.</li>
+<li>Los SREs trabajan en parejas (pair-programming) y comparten insights al final.</li>
+<li>El facilitador circula y resuelve bloqueos (<code>groupby</code>, <code>resample</code>, <code>fillna</code>, <code>boxplot</code>).</li>
+<li><strong>Pit-stop a los 8 minutos</strong>: cada dupla dice 1 hallazgo en 15 s.</li>
+</ol>
+<h2 id="prompts-de-discusion-por-lab">Prompts de discusión por lab</h2>
+<h3 id="lab-1-figuras-nan-dist-boxplot-outliers">Lab 1 (figuras: nan, dist, boxplot, outliers)</h3>
+<ul>
+<li>Por que p95 &gt; media para alertar latencia?</li>
+<li>Como se traduce <code>error_rate_mean</code> a disponibilidad mensual?</li>
+<li>Outlier = incidente real o sensor roto? Como decidir.</li>
+</ul>
+<h3 id="lab-2-figuras-nan-boxplot-success-hourly-trigger">Lab 2 (figuras: nan, boxplot, success, hourly, trigger)</h3>
+<ul>
+<li>Cual es el job con peor <code>success_rate</code> y por que preocupa?</li>
+<li>Que trigger tiene el success-rate mas bajo?</li>
+<li>Outliers arriba del bigote: optimizar. Negativos: abrir bug del exporter.</li>
+</ul>
+<h3 id="lab-3-figuras-nan-daily-heatmap-boxplot-breach-rollback">Lab 3 (figuras: nan, daily, heatmap, boxplot, breach, rollback)</h3>
+<ul>
+<li>Que equipo concentra la mayor carga?</li>
+<li>La tasa de breach correlaciona con la prioridad?</li>
+<li>Los outliers de resolucion se concentran en lunes 9–11 a.m.?</li>
+</ul>
+<h3 id="lab-4-figuras-avail-auto-ops-rice">Lab 4 (figuras: avail, auto, ops + RICE)</h3>
+<ul>
+<li>Una cifra por seccion o un parrafo? Justificar.</li>
+<li>Que accion (RICE mas alto) priorizaran esta semana?</li>
+</ul>
+<h2 id="cierre-ultimos-7-min">Cierre (últimos 7 min)</h2>
+<ul>
+<li>Cada dupla comparte su <strong>frase ejecutiva</strong> del lab 4.</li>
+<li>Mural y voto: la headline mas clara.</li>
+<li>Tarea post-sesión: aplicar el mismo ejercicio a <strong>1 semana real</strong> de su servicio.</li>
+</ul>
+<h2 id="senales-de-que-la-sesion-va-bien">Señales de que la sesión va bien</h2>
+<ul>
+<li>Al menos 1 insight inesperado por dupla al final de cada lab.</li>
+<li>Preguntas sobre <strong>interpretacion</strong> de figuras, no solo sintaxis.</li>
+<li>Algun SRE propone una métrica que <strong>no</strong> esta en los datasets.</li>
+</ul>
+<h2 id="senales-de-riesgo">Señales de riesgo</h2>
+<ul>
+<li>Errores de instalacion al inicio -&gt; tener <code>requirements.txt</code> + Python 3.11 portable como plan B.</li>
+<li>Grupo silencioso en hands-on -&gt; asignar duplicas explicitas en chat antes de empezar.</li>
+<li>Notebooks lentos al cargar figuras -&gt; exportar PNGs pre-renderizados de <code>html/</code>.</li>
+</ul>
+</article>
+<footer class="site">
+<div class="wrap">
+<div>SETI · SRE Data Analytics · blanco + grises + rojos</div>
+<div><a href="../index.html">Inicio</a></div>
+</div></footer>
+  <script src="assets/registration.js" defer></script>
+</body>
+</html>

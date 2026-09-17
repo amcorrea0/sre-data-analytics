@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<title>SETI · Game — SRE Data Analytics</title>
+<link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/registration.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="brand"><div class="logo">S</div> SETI · SRE Data Analytics</div>
+    <div class="links">
+      <a href="index.html">Inicio</a>
+      
+      <a class="active" href="game.html">Game</a>
+      <a href="quiz.html">Quiz</a>
+      
+      
+    </div>
+    
+  </div>
+    <a class="cta reg-nav-btn" href="#" onclick="event.preventDefault();window.__SETI__.openModal();" id="__SETI_OPEN_REG__">· Registrarme</a>
+</nav>
+
+<header class="hero" style="padding: 56px 28px 64px;">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span> Modo arcade</span>
+    <h1>Responde <span class="accent">en línea</span><br>con cada lab.</h1>
+    <p class="lede">Las preguntas se desbloquean conforme completas el lab correspondiente.
+      Cada acierto suma XP y badges. Al final, tu nivel.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#m1">Empezar Misión 1</a>
+      <a class="btn btn-ghost" href="quiz.html">Modo quiz libre</a>
+    </div>
+  </div>
+</header>
+
+<section class="block" style="padding-top: 32px;">
+  <div class="wrap">
+    <div class="learn-card" style="display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
+      <div style="flex:1; min-width:240px;">
+        <div class="bar-wrap" style="margin-bottom:8px;">
+          <div class="label">XP</div>
+          <div class="progress" style="flex:1;"><span id="xp-bar" style="width:0%"></span></div>
+          <div><strong id="xp-text">0</strong></div>
+        </div>
+        <div class="badge-row" id="badge-row">
+          <span class="chip ghost">Hunter</span>
+          <span class="chip ghost">MTTR</span>
+          <span class="chip ghost">Wrangler</span>
+          <span class="chip ghost">Storyteller</span>
+        </div>
+      </div>
+      <div><span class="chip ink" id="level">Nivel 0 · Aprendiz</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" style="background:var(--grey-6); padding-top:32px;">
+  <div class="wrap">
+
+    <!-- MISION 1 -->
+    <article id="m1" class="qcard" data-lab="lab1" data-xp="100" data-badge="Outlier Hunter">
+      <h3>🎯 Misión 1 — Observabilidad <span class="chip ink">+100 XP</span></h3>
+      <p class="qmeta">Marca la misión como completada cuando termines el lab, luego responde:</p>
+      <div style="margin: 6px 0 14px;">
+        <button class="btn btn-ink" data-toggle="m1">Marcar lab completado</button>
+        <a class="btn btn-ghost" style="color:var(--accent);" href="html/lab1_observabilidad.html">Abrir lab ↗</a>
+        <span class="chip ghost" id="m1-status">Bloqueado</span>
+      </div>
+      <div class="gate" id="gate-m1">
+        <p><strong>Bloqueado.</strong> Termina el lab 1 para desbloquear las preguntas.</p>
+      </div>
+      <div id="qs-m1" hidden>
+        <!-- preguntas M1 -->
+        <div class="qcard" data-q="g1" data-correct="b" data-xp="50">
+          <h3>Q1 — ¿Qué patrón en un heatmap de NaN indica <em>datos faltantes sistemáticos</em>?</h3>
+          <label class="opt" data-v="a"><input type="radio" name="g1" value="a" hidden><span class="ltr">A</span> Puntos dispersos sin patrón.</label>
+          <label class="opt" data-v="b"><input type="radio" name="g1" value="b" hidden><span class="ltr">B</span> Bandas horizontales o verticales continuas.</label>
+          <label class="opt" data-v="c"><input type="radio" name="g1" value="c" hidden><span class="ltr">C</span> Solo aparece NaN en columnas numéricas.</label>
+          <label class="opt" data-v="d"><input type="radio" name="g1" value="d" hidden><span class="ltr">D</span> El heatmap no sirve para detectar NaN.</label>
+          <div class="feedback"></div>
+        </div>
+        <div class="qcard" data-q="g2" data-correct="c" data-xp="50">
+          <h3>Q2 — ¿Por qué la <strong>mediana</strong> es mejor que la media para imputar <code>latency_ms</code>?</h3>
+          <label class="opt" data-v="a"><input type="radio" name="g2" value="a" hidden><span class="ltr">A</span> Porque es más rápida de calcular.</label>
+          <label class="opt" data-v="b"><input type="radio" name="g2" value="b" hidden><span class="ltr">B</span> Porque siempre es menor que la media.</label>
+          <label class="opt" data-v="c"><input type="radio" name="g2" value="c" hidden><span class="ltr">C</span> Porque es robusta a outliers y errores técnicos.</label>
+          <label class="opt" data-v="d"><input type="radio" name="g2" value="d" hidden><span class="ltr">D</span> Porque es robusta a valores faltantes en otras columnas.</label>
+          <div class="feedback"></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- MISION 2 -->
+    <article id="m2" class="qcard" data-lab="lab2" data-xp="120" data-badge="MTTR Specialist">
+      <h3>🎯 Misión 2 — Automatización <span class="chip ink">+120 XP</span></h3>
+      <p class="qmeta">Bloqueada hasta terminar el lab 2.</p>
+      <div style="margin: 6px 0 14px;">
+        <button class="btn btn-ink" data-toggle="m2">Marcar lab completado</button>
+        <a class="btn btn-ghost" style="color:var(--accent);" href="html/lab2_automatizacion.html">Abrir lab ↗</a>
+        <span class="chip ghost" id="m2-status">Bloqueado</span>
+      </div>
+      <div class="gate" id="gate-m2">
+        <p><strong>Bloqueado.</strong> Termina el lab 2 para desbloquear las preguntas.</p>
+      </div>
+      <div id="qs-m2" hidden>
+        <div class="qcard" data-q="g3" data-correct="a" data-xp="60">
+          <h3>Q3 — En el boxplot log de <code>duration_sec</code>, puntos <strong>solo arriba</strong> del bigote indican:</h3>
+          <label class="opt" data-v="a"><input type="radio" name="g3" value="a" hidden><span class="ltr">A</span> Jobs lentos reales: candidato a optimizar.</label>
+          <label class="opt" data-v="b"><input type="radio" name="g3" value="b" hidden><span class="ltr">B</span> Jobs normales: están dentro del SLA.</label>
+          <label class="opt" data-v="c"><input type="radio" name="g3" value="c" hidden><span class="ltr">C</span> Datos corruptos del exporter.</label>
+          <label class="opt" data-v="d"><input type="radio" name="g3" value="d" hidden><span class="ltr">D</span> El job nunca falla.</label>
+          <div class="feedback"></div>
+        </div>
+        <div class="qcard" data-q="g4" data-correct="d" data-xp="60">
+          <h3>Q4 — El <strong>MTTR</strong> de un job se calcula como…</h3>
+          <label class="opt" data-v="a"><input type="radio" name="g4" value="a" hidden><span class="ltr">A</span> Media de duración de runs exitosos.</label>
+          <label class="opt" data-v="b"><input type="radio" name="g4" value="b" hidden><span class="ltr">B</span> p99 de todas las duraciones.</label>
+          <label class="opt" data-v="c"><input type="radio" name="g4" value="c" hidden><span class="ltr">C</span> Suma de retries / total de runs.</label>
+          <label class="opt" data-v="d"><input type="radio" name="g4" value="d" hidden><span class="ltr">D</span> Mediana de duración <strong>cuando status es failed/timeout</strong>.</label>
+          <div class="feedback"></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- MISION 3 -->
+    <article id="m3" class="qcard" data-lab="lab3" data-xp="160" data-badge="Demand Wrangler">
+      <h3>🎯 Misión 3 — Tickets (hands-on) <span class="chip red">+160 XP</span></h3>
+      <p class="qmeta">Bloqueada hasta terminar el lab 3.</p>
+      <div style="margin: 6px 0 14px;">
+        <button class="btn btn-ink" data-toggle="m3">Marcar lab completado</button>
+        <a class="btn btn-ghost" style="color:var(--accent);" href="html/lab3_requerimientos.html">Abrir lab ↗</a>
+        <span class="chip ghost" id="m3-status">Bloqueado</span>
+      </div>
+      <div class="gate" id="gate-m3">
+        <p><strong>Bloqueado.</strong> Termina el lab 3 para desbloquear las preguntas.</p>
+      </div>
+      <div id="qs-m3" hidden>
+        <div class="qcard" data-q="g5" data-correct="c" data-xp="80">
+          <h3>Q5 — En <code>tickets.csv</code> aparecen <code>resolution_min &lt;= 0</code>. ¿Qué haces?</h3>
+          <label class="opt" data-v="a"><input type="radio" name="g5" value="a" hidden><span class="ltr">A</span> Imputar con la media.</label>
+          <label class="opt" data-v="b"><input type="radio" name="g5" value="b" hidden><span class="ltr">B</span> Dejarlos: outliers de negocio.</label>
+          <label class="opt" data-v="c"><input type="radio" name="g5" value="c" hidden><span class="ltr">C</span> Dropearlos: errores técnicos (no son tiempos válidos).</label>
+          <label class="opt" data-v="d"><input type="radio" name="g5" value="d" hidden><span class="ltr">D</span> Convertirlos a NaN e imputar luego.</label>
+          <div class="feedback"></div>
+        </div>
+        <div class="qcard" data-q="g6" data-correct="b" data-xp="80">
+          <h3>Q6 — ¿Por qué usamos <strong>escala log</strong> en el boxplot de <code>resolution_min</code> por equipo?</h3>
+          <label class="opt" data-v="a"><input type="radio" name="g6" value="a" hidden><span class="ltr">A</span> Las medianas son iguales.</label>
+          <label class="opt" data-v="b"><input type="radio" name="g6" value="b" hidden><span class="ltr">B</span> Distribución muy asimétrica: minutos y días conviven.</label>
+          <label class="opt" data-v="c"><input type="radio" name="g6" value="c" hidden><span class="ltr">C</span> El CSV pesa menos.</label>
+          <label class="opt" data-v="d"><input type="radio" name="g6" value="d" hidden><span class="ltr">D</span> No es útil.</label>
+          <div class="feedback"></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- MISION 4 -->
+    <article id="m4" class="qcard" data-lab="lab4" data-xp="200" data-badge="Storyteller">
+      <h3>🎯 Misión 4 — Dashboard ejecutivo <span class="chip red">+200 XP</span></h3>
+      <p class="qmeta">Bloqueada hasta terminar el lab 4.</p>
+      <div style="margin: 6px 0 14px;">
+        <button class="btn btn-ink" data-toggle="m4">Marcar lab completado</button>
+        <a class="btn btn-ghost" style="color:var(--accent);" href="html/lab4_ejecutivo.html">Abrir lab ↗</a>
+        <span class="chip ghost" id="m4-status">Bloqueado</span>
+      </div>
+      <div class="gate" id="gate-m4">
+        <p><strong>Bloqueado.</strong> Termina el lab 4 para desbloquear las preguntas.</p>
+      </div>
+      <div id="qs-m4" hidden>
+        <div class="qcard" data-q="g7" data-correct="c" data-xp="100">
+          <h3>Q7 — Una buena <strong>headline ejecutiva</strong> de 1 línea debe incluir:</h3>
+          <label class="opt" data-v="a"><input type="radio" name="g7" value="a" hidden><span class="ltr">A</span> Un párrafo con todas las métricas del mes.</label>
+          <label class="opt" data-v="b"><input type="radio" name="g7" value="b" hidden><span class="ltr">B</span> 1 cifra + 1 ventana de tiempo.</label>
+          <label class="opt" data-v="c"><input type="radio" name="g7" value="c" hidden><span class="ltr">C</span> 1 cifra + 1 responsable + 1 ventana de tiempo + 1 acción priorizada.</label>
+          <label class="opt" data-v="d"><input type="radio" name="g7" value="d" hidden><span class="ltr">D</span> Una lista de tickets abiertos.</label>
+          <div class="feedback"></div>
+        </div>
+        <div class="qcard" data-q="g8" data-correct="b" data-xp="100">
+          <h3>Q8 — ¿Para qué sirve el <strong>score RICE</strong>?</h3>
+          <label class="opt" data-v="a"><input type="radio" name="g8" value="a" hidden><span class="ltr">A</span> Reemplazar el boxplot.</label>
+          <label class="opt" data-v="b"><input type="radio" name="g8" value="b" hidden><span class="ltr">B</span> Priorizar acciones: <code>(Reach × Impact) / Effort</code>.</label>
+          <label class="opt" data-v="c"><input type="radio" name="g8" value="c" hidden><span class="ltr">C</span> Calcular disponibilidad mensual.</label>
+          <label class="opt" data-v="d"><input type="radio" name="g8" value="d" hidden><span class="ltr">D</span> Estimar p95 de latencia.</label>
+          <div class="feedback"></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CIERRE -->
+    <div class="qcard" id="end-card" style="display:none;">
+      <h3>🏁 Fin de la sesión</h3>
+      <p id="end-msg"></p>
+      <p>
+        <a class="btn btn-primary" href="quiz.html">Modo quiz libre</a>
+        
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div>SETI · SRE Data Analytics · blanco + grises + rojos</div>
+    <div><a href="index.html">Inicio</a></div>
+  </div>
+</footer>
+
+<script>
+const STORE = 'seti-sre-game';
+function load() { try { return JSON.parse(localStorage.getItem(STORE)) || {}; } catch { return {}; } }
+function save(s) { localStorage.setItem(STORE, JSON.stringify(s)); }
+
+const EXPLAIN = {
+  g1: 'Bandas = patrón sistemático (sensor, exportador, batch).',
+  g2: 'La mediana no se mueve con outliers ni con errores técnicos.',
+  g3: 'Outliers unilaterales arriba = picos reales (no datos malos).',
+  g4: 'MTTR = mediana de duración en runs fallidos/timeout.',
+  g5: 'Tiempos ≤ 0 no son válidos: drop + bug del exporter.',
+  g6: 'Cola larga (minutos → días) solo se ve en escala log.',
+  g7: 'Cifra + responsable + ventana + acción = la regla de la headline.',
+  g8: 'RICE = Reach × Impact / Effort.'
+};
+
+let xp = 0;
+const XP_TOTAL = 580; // suma de data-xp de las 8 preguntas
+function paint() {
+  document.getElementById('xp-bar').style.width = Math.round(100 * xp / XP_TOTAL) + '%';
+  document.getElementById('xp-text').textContent = xp + ' / ' + XP_TOTAL + ' XP';
+  const lvl = xp >= 580 ? 'Nivel 4 · Storyteller'
+            : xp >= 380 ? 'Nivel 3 · Wrangler'
+            : xp >= 220 ? 'Nivel 2 · Specialist'
+            : xp >= 100 ? 'Nivel 1 · Hunter'
+            : 'Nivel 0 · Aprendiz';
+  document.getElementById('level').textContent = lvl;
+}
+
+// toggle de misión completada
+document.querySelectorAll('[data-toggle]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.dataset.toggle;
+    const s = load();
+    s[id] = !s[id];
+    save(s);
+    refreshMissions();
+  });
+});
+
+function refreshMissions() {
+  const s = load();
+  ['m1','m2','m3','m4'].forEach((id, idx) => {
+    const done = !!s[id];
+    const gate = document.getElementById('gate-' + id);
+    const qs   = document.getElementById('qs-' + id);
+    const st   = document.getElementById(id + '-status');
+    if (done) {
+      gate.classList.add('unlocked');
+      gate.innerHTML = '<p><strong>✓ Lab completado.</strong> Responde para ganar XP.</p>';
+      qs.hidden = false;
+      st.textContent = 'Desbloqueado';
+      st.classList.remove('ghost'); st.classList.add('red');
+    }
+  });
+}
+
+// selección de opciones
+document.querySelectorAll('.qcard[data-q]').forEach(card => {
+  card.addEventListener('change', (e) => {
+    const qid = card.dataset.q;
+    const selInput = card.querySelector(`input[name="${qid}"]:checked`);
+    if (!selInput) return;
+    card.querySelectorAll('.opt').forEach(o => o.classList.remove('sel','right','wrong'));
+    selInput.parentElement.classList.add('sel');
+    const correct = card.dataset.correct;
+    const chosen = selInput.value;
+    card.querySelector(`.opt[data-v="${chosen}"]`).classList.add(chosen === correct ? 'right' : 'wrong');
+    card.querySelector(`.opt[data-v="${correct}"]`).classList.add('right');
+    const fb = card.querySelector('.feedback');
+    fb.className = 'feedback show ' + (chosen === correct ? 'ok' : 'bad');
+    fb.textContent = EXPLAIN[card.dataset.q] || '';
+    if (chosen === correct && !card.dataset.done) {
+      card.dataset.done = '1';
+      xp += +card.dataset.xp;
+      paint();
+      checkEnd();
+    }
+  });
+});
+
+function checkEnd() {
+  const answered = [...document.querySelectorAll('.qcard[data-q]')].filter(c => c.dataset.done).length;
+  if (answered >= 8) {
+    const end = document.getElementById('end-card');
+    end.style.display = 'block';
+    const lvl = document.getElementById('level').textContent;
+    document.getElementById('end-msg').innerHTML =
+      `Respondiste <strong>8/8</strong> preguntas. <strong>${lvl}</strong>. XP final: <strong>${xp}</strong>.`;
+    end.scrollIntoView({behavior:'smooth'});
+  }
+}
+
+refreshMissions();
+paint();
+</script>
+
+  <script src="assets/registration.js" defer></script>
+
+<script>
+(function(){
+  if (!window.__SETI__) return;
+  var KEY = 'seti-sre-quiz-game';
+  var ans = {};
+  try { ans = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e){}
+  function save(){
+    try { localStorage.setItem(KEY, JSON.stringify(ans)); } catch(e){}
+  }
+  document.querySelectorAll('.qcard[data-q]').forEach(function(card){
+    card.addEventListener('change', function(e){
+      var qid = card.dataset.q;
+      var inp = card.querySelector('input[name="'+qid+'"]:checked');
+      if (!inp) return;
+      ans[qid] = {
+        chosen: inp.value,
+        correct: card.dataset.correct,
+        correct_chosen: inp.value === card.dataset.correct,
+        at: new Date().toISOString()
+      };
+      save();
+    });
+  });
+  document.querySelectorAll('.qcard[data-q]').forEach(function(card){
+    var qid = card.dataset.q; var a = ans[qid]; if (!a) return;
+    var inp = card.querySelector('input[name="'+qid+'"][value="'+a.chosen+'"]');
+    if (inp) { inp.checked = true; inp.parentElement.classList.add(a.correct_chosen ? 'right' : 'wrong'); }
+    var corr = card.querySelector('.opt[data-v="'+a.correct+'"]');
+    if (corr) corr.classList.add('right');
+  });
+  // tambien guardar misiones desbloqueadas
+  var MK = 'seti-sre-game-persistent';
+  try {
+    var s = JSON.parse(localStorage.getItem(MK) || '{}');
+    document.querySelectorAll('[data-toggle]').forEach(function(b){
+      var id = b.dataset.toggle;
+      if (s[id]) {
+        var gate = document.getElementById('gate-'+id);
+        if (gate) { gate.classList.add('unlocked'); gate.innerHTML = '<p><strong>✓ Lab completado.</strong> Responde para ganar XP.</p>'; }
+        var qs = document.getElementById('qs-'+id);
+        if (qs) qs.hidden = false;
+        var st = document.getElementById(id+'-status');
+        if (st) { st.textContent = 'Desbloqueado'; st.classList.remove('ghost'); st.classList.add('red'); }
+      }
+    });
+  } catch(e){}
+})();
+</script>
+
+</body>
+</html>

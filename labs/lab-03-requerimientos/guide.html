@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 3 — Guía del estudiante — SETI · SRE Data Analytics</title>
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  /* prose-page solo para el contenido renderizado */
+  .prose-page { max-width: 920px; margin: 0 auto; padding: 56px 28px 96px; }
+  .prose-page h1 { font-size: clamp(2rem, 4vw, 2.8rem); margin: 0 0 8px; letter-spacing: -.02em; }
+  .prose-page > p { color: var(--grey-2); margin: 4px 0 0; max-width: 720px; }
+  .prose-page h2 { font-size: 1.4rem; margin-top: 36px; border-bottom: 1px solid var(--grey-5); padding-bottom: 6px; }
+  .prose-page h3 { font-size: 1.12rem; margin-top: 28px; color: var(--red-7); }
+  .prose-page h1 + h2 { margin-top: 32px; }
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+<div class="brand"><div class="logo">S</div> SETI · SRE Data Analytics</div>
+<div class="links">
+<a href="../../index.html">Inicio</a>
+<a href="../../index.html">Misiones</a>
+<a href="../../game.html">Game</a>
+<a href="../../quiz.html">Quiz</a>
+</div>
+<a class="cta" href="../../index.html">Empezar</a>
+</div></nav>
+<header class="hero" style="padding: 56px 28px 56px;">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span> Misión 3 · Hands-on · 12 min</span>
+    <h1>Lab 3 — Guía del estudiante</h1>
+    
+  </div>
+</header>
+<article class="prose-page">
+<h1 id="lab-3-requerimientos-operacion-tickets-y-outliers-hands-on">Lab 3 — Requerimientos operación: tickets y outliers (hands-on)</h1>
+<h2 id="datos-faltantes-y-como-arreglarlos">Datos faltantes y cómo arreglarlos</h2>
+<table>
+<thead>
+<tr>
+<th>Columna</th>
+<th>Problema</th>
+<th>Tratamiento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>priority</code></td>
+<td>~2% NaN</td>
+<td>NaN → <strong>moda</strong> (categorica, no se inventa)</td>
+</tr>
+<tr>
+<td><code>team</code></td>
+<td>~1.5% NaN</td>
+<td>NaN → <strong>moda</strong></td>
+</tr>
+<tr>
+<td><code>resolution_min</code></td>
+<td>~1% con valores <code>&lt;= 0</code> o <code>&gt; 100 000</code></td>
+<td>drop errores técnicos antes de boxplot</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Importante: imputar la moda no cambia el conteo de breach global (un NaN en <code>priority</code>
+<strong>sí</strong> lo cambiaria si se filtra con <code>breach=(resolution&gt;sla)</code>. Por eso conviene
+recuperar prioridad primero.</p>
+</blockquote>
+<h2 id="figuras-6">Figuras (6)</h2>
+<ol>
+<li><strong><code>fig1_nan.png</code></strong> — mapa de NaN.</li>
+<li><strong><code>fig2_daily.png</code></strong> — Tickets por día (lineplot). Picos en lunes = incidentes batch.</li>
+<li><strong><code>fig3_heatmap.png</code></strong> — pivote team × category, escala <code>YlGnBu</code> con números encima.</li>
+<li><strong><code>fig4_boxplot.png</code></strong> — <code>resolution_min</code> por equipo en escala <strong>log</strong>. La escala log es
+   clave: sin ella, 1 ticket de 24 h aplasta toda la distribución.</li>
+<li><strong><code>fig5_breach.png</code></strong> — % breach de SLA por equipo.</li>
+<li><strong><code>fig6_rollback.png</code></strong> — % rollback entre cambios (solo <code>category=='change'</code>).</li>
+</ol>
+<h2 id="como-leer-un-boxplot-recordatorio">Cómo leer un boxplot (recordatorio)</h2>
+<ul>
+<li>Caja = percentiles 25–75 (IQR).</li>
+<li>Rayita dentro = mediana.</li>
+<li>Bigotes = Tukey (1.5 × IQR).</li>
+<li><strong>Puntos fuera</strong> = outliers. <strong>Si son solo arriba</strong>, suelen ser incidentes reales.</li>
+</ul>
+<h2 id="plantilla-de-insight-ejecutivo-1-linea-por-seccion">Plantilla de insight ejecutivo (1 línea por seccion)</h2>
+<ul>
+<li><strong>Carga:</strong> "el equipo <strong>___</strong> concentra el <strong>__%</strong> de tickets del período."</li>
+<li><strong>Breach:</strong> "el equipo <strong>___</strong> lidera el breach con <strong>__%</strong>; el promedio es __%."</li>
+<li><strong>Outlier:</strong> "los tickets outliers se concentran los <strong>lunes 9–11 a.m.</strong>"</li>
+<li><strong>Accion:</strong> "la accion priorizada es <strong><em>, RICE = </em></strong>."</li>
+</ul>
+</article>
+<footer class="site">
+<div class="wrap">
+<div>SETI · SRE Data Analytics · blanco + grises + rojos</div>
+<div><a href="../../index.html">Inicio</a></div>
+</div></footer>
+</body>
+</html>

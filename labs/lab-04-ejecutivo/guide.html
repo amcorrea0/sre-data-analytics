@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 4 — Guía del estudiante — SETI · SRE Data Analytics</title>
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  /* prose-page solo para el contenido renderizado */
+  .prose-page { max-width: 920px; margin: 0 auto; padding: 56px 28px 96px; }
+  .prose-page h1 { font-size: clamp(2rem, 4vw, 2.8rem); margin: 0 0 8px; letter-spacing: -.02em; }
+  .prose-page > p { color: var(--grey-2); margin: 4px 0 0; max-width: 720px; }
+  .prose-page h2 { font-size: 1.4rem; margin-top: 36px; border-bottom: 1px solid var(--grey-5); padding-bottom: 6px; }
+  .prose-page h3 { font-size: 1.12rem; margin-top: 28px; color: var(--red-7); }
+  .prose-page h1 + h2 { margin-top: 32px; }
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+<div class="brand"><div class="logo">S</div> SETI · SRE Data Analytics</div>
+<div class="links">
+<a href="../../index.html">Inicio</a>
+<a href="../../index.html">Misiones</a>
+<a href="../../game.html">Game</a>
+<a href="../../quiz.html">Quiz</a>
+</div>
+<a class="cta" href="../../index.html">Empezar</a>
+</div></nav>
+<header class="hero" style="padding: 56px 28px 56px;">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span> Misión 4 · Hands-on · 12 min</span>
+    <h1>Lab 4 — Guía del estudiante</h1>
+    
+  </div>
+</header>
+<article class="prose-page">
+<h1 id="lab-4-dashboard-ejecutivo-hands-on">Lab 4 — Dashboard ejecutivo (hands-on)</h1>
+<h2 id="limpieza-minima-del-dashboard">Limpieza mínima del dashboard</h2>
+<p>Aplica las mismas reglas que los labs anteriores, en una sola pasada al inicio:
+- <code>metrics</code>: drop latencia&lt;0, cpu&gt;100; NaN → mediana por columna.
+- <code>runs</code>: drop duraciones imposibles.
+- <code>tickets</code>: drop resolution&lt;=0 o &gt;100 000; NaN en <code>priority</code>/<code>team</code> → moda.</p>
+<h2 id="4-figuras-listas-para-personalizar">4 figuras listas para personalizar</h2>
+<ol>
+<li><strong><code>fig1_avail.png</code></strong> — Disponibilidad observada + top 3 incidentes por clientes afectados.</li>
+<li><strong><code>fig2_auto.png</code></strong> — Volumen vs success-rate por job (eje secundario).</li>
+<li><strong><code>fig3_ops.png</code></strong> — % breach por equipo.</li>
+<li><strong>(fig4)</strong> — Tabla RICE con las 3 acciones priorizadas.</li>
+</ol>
+<h2 id="como-escribir-una-headline-ejecutiva">Cómo escribir una headline ejecutiva</h2>
+<blockquote>
+<p>"Disponibilidad del <strong>99.92%</strong> en el período; el servicio <strong>checkout-api</strong> explica el
+<strong>60%</strong> del error budget consumido en los últimos 30 días."</p>
+</blockquote>
+<p>Reglas:
+- 1 cifra grande + 1 responsable + 1 ventana de tiempo.
+- Sin acrónimos sin definir.
+- Cuantifica el siguiente paso (no "investigar", sino "reducir p95 a &lt; 200 ms en 2 sprints").</p>
+</article>
+<footer class="site">
+<div class="wrap">
+<div>SETI · SRE Data Analytics · blanco + grises + rojos</div>
+<div><a href="../../index.html">Inicio</a></div>
+</div></footer>
+</body>
+</html>

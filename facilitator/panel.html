@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SETI · Panel del facilitador</title>
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/registration.css">
+<style>
+  .panel-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .step {
+    background: var(--paper);
+    border: 1px solid var(--grey-5);
+    border-radius: var(--r-md);
+    padding: 18px 22px;
+    box-shadow: var(--shadow-sm);
+  }
+  .step-head {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 10px;
+  }
+  .step-num {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--ink-0); color: var(--paper);
+    display: grid; place-items: center;
+    font-weight: 800;
+  }
+  .step.done .step-num { background: var(--ok, #2ea043); }
+  .step.optional .step-num { background: var(--grey-3); }
+  .step-head h3 { margin: 0; font-size: 1.05rem; }
+  .step-time {
+    margin-left: auto;
+    font-size: .78rem; color: var(--grey-2);
+    background: var(--grey-6);
+    padding: 3px 10px; border-radius: 999px;
+  }
+  .step-body { color: var(--ink-2); font-size: .95rem; }
+  .step-body p { margin: 0 0 .6em; }
+  .step-body code, .step-body kbd { font-size: .88em; }
+  .step-body ul { margin: .4em 0 .4em 1em; padding: 0; }
+  .step-body li { margin: 3px 0; }
+
+  .step .errbox {
+    margin-top: 10px;
+    background: #fff5f4;
+    border-left: 4px solid var(--red-5);
+    padding: 10px 14px;
+    border-radius: 6px;
+    color: var(--red-8);
+    font-size: .88rem;
+  }
+  .step .errbox strong { display: block; margin-bottom: 4px; }
+
+  .panel-toc {
+    position: sticky; top: 60px;
+    background: var(--paper);
+    border: 1px solid var(--grey-5);
+    border-radius: var(--r-md);
+    padding: 14px 18px;
+    margin-bottom: 18px;
+    z-index: 30;
+  }
+  .panel-toc h4 {
+    margin: 0 0 6px;
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--grey-2);
+  }
+  .panel-toc ol { margin: 0; padding-left: 18px; }
+  .panel-toc a { color: var(--ink-2); }
+
+  .checklist { list-style: none; padding: 0; margin: 0; }
+  .checklist li { padding: 4px 0; }
+  .checklist input { margin-right: 8px; transform: scale(1.15); accent-color: var(--accent); }
+
+  .lede-card {
+    background: var(--paper);
+    border: 1px solid var(--grey-5);
+    border-left: 5px solid var(--accent);
+    padding: 18px 22px;
+    border-radius: var(--r-md);
+    margin: 18px 0;
+  }
+  .lede-card h3 { margin: 0 0 6px; }
+
+  @media (min-width: 900px) {
+    .panel-layout { display: grid; grid-template-columns: 240px 1fr; gap: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="brand"><div class="logo">S</div> SETI · SRE Data Analytics</div>
+    <div class="links">
+      <a href="../index.html">Inicio</a>
+      <a href="../game.html">Game</a>
+      <a href="../quiz.html">Quiz</a>
+      <a href="STORY.html">Story</a>
+      <a class="active" href="panel.html">Panel</a>
+      <a href="FACILITATOR.html">Guía</a>
+    </div>
+    <a class="cta" href="../index.html">Volver</a>
+  </div>
+</nav>
+
+<header class="hero" style="padding: 56px 28px 56px;">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span> Solo para el facilitador</span>
+    <h1>Panel de control de la sesión</h1>
+    <p class="lede">10 pasos ordenados. Cada paso dice <strong>qué hago</strong>,
+      <strong>qué decir al equipo</strong>, <strong>dónde mirar</strong> y
+      <strong>qué hago si falla algo</strong>. Marca cada paso cuando lo completes
+      (se guarda en tu navegador).</p>
+  </div>
+</header>
+
+<div class="wrap" style="padding-top: 32px; padding-bottom: 96px;">
+  <div class="panel-layout">
+    <aside class="panel-toc">
+      <h4>Pasos</h4>
+      <ol>
+        <li><a href="#s0">0 · Setup técnico (T-24h)</a></li>
+        <li><a href="#s1">1 · Bienvenida y registro (5 min)</a></li>
+        <li><a href="#s2">2 · Lab 1 guiado (12 min)</a></li>
+        <li><a href="#s3">3 · Lab 2 guiado (12 min)</a></li>
+        <li><a href="#s4">4 · Lab 3 hands-on (12 min)</a></li>
+        <li><a href="#s5">5 · Lab 4 hands-on (12 min)</a></li>
+        <li><a href="#s6">6 · Mural + headlines (4 min)</a></li>
+        <li><a href="#s7">7 · Quiz final libre (5 min)</a></li>
+        <li><a href="#s8">8 · Cierre y tareas (3 min)</a></li>
+        <li><a href="#s9">9 · Plan B (si algo falla)</a></li>
+      </ol>
+      <div style="margin-top:14px;font-size:.8rem;color:var(--grey-2);">
+        Progreso: <strong id="prog">0/10</strong>
+        <div class="progress" style="margin-top:6px;"><span id="prog-bar" style="width:0%"></span></div>
+      </div>
+    </aside>
+
+    <main class="panel-grid">
+
+      <div class="lede-card">
+        <h3>Antes de empezar</h3>
+        <p>Tu rol: <strong>mostrar, no resolver</strong>. Si Jupyter falla, pasa al Plan B. Si
+          alguien se queda atrás, abre el Plan B en voz alta y que continúen.</p>
+      </div>
+
+      <!-- Paso 0 -->
+      <section class="step" id="s0" data-step="0">
+        <div class="step-head">
+          <div class="step-num">0</div>
+          <h3>Setup técnico (T-24h)</h3>
+          <span class="step-time">10 min</span>
+        </div>
+        <div class="step-body">
+          <p><strong>Hago:</strong></p>
+          <ul class="checklist">
+            <li><label><input type="checkbox" data-key="s0a"> Regenerar datos (seed=42) si la fecha cambió.</label></li>
+            <li><label><input type="checkbox" data-key="s0b"> Renderizar HTMLs y decorarlos con SETI.</label></li>
+            <li><label><input type="checkbox" data-key="s0c"> Probar el panel, game y quiz en mi navegador.</label></li>
+            <li><label><input type="checkbox" data-key="s0d"> Confirmar que el repo está en GitHub Pages y que el link funciona.</label></li>
+            <li><label><input type="checkbox" data-key="s0e"> Compartir URL del sitio, no del repo, al equipo.</label></li>
+          </ul>
+          <p><strong>Digo al equipo (1 línea):</strong> "Abran <code>&lt;url&gt;</code> en su navegador.
+            No necesitan instalar nada."</p>
+          <div class="errbox">
+            <strong>Si falla la URL pública:</strong> usa el repo local:
+            <code>git clone … &amp;&amp; python -m http.server 8000</code> y comparte
+            <code>http://&lt;tu-ip&gt;:8000/index.html</code>.
+          </div>
+        </div>
+      </section>
+
+      <!-- Paso 1 -->
+      <section class="step" id="s1" data-step="1">
+        <div class="step-head">
+          <div class="step-num">1</div>
+          <h3>Bienvenida y registro</h3>
+          <span class="step-time">5 min</span>
+        </div>
+        <div class="step-body">
+          <p><strong>Digo:</strong> "Si el banner rojo arriba les pide registrarse, dense 30 segundos para llenar
+            nombre, email y equipo. Si no quieren, pueden cerrarlo."</p>
+          <p><strong>Miro:</strong> el banner pegajoso arriba. Si ya están registrados, no aparece.</p>
+          <p><strong>Hago:</strong> proyecto <a href="../index.html">index.html</a>; mientras se registran,
+            explico el hero en 30 segundos.</p>
+          <div class="errbox">
+            <strong>Si un SRE no quiere dejar email:</strong> cierra el banner con la X. La sesión sigue normal.
+            No es bloqueante por diseño.
+          </div>
+          <div class="errbox">
+            <strong>Si el form no valida (email mal):</strong> el campo se pone rojo. Pedirles que escriban bien
+            el email, sin espacios.
+          </div>
+        </div>
+      </section>
+
+      <!-- Paso 2 -->
+      <section class="step" id="s2" data-step="2">
+        <div class="step-head">
+          <div class="step-num">2</div>
+          <h3>Lab 1 guiado — Observabilidad</h3>
+          <span class="step-time">12 min</span>
+        </div>
+        <div class="step-body">
+          <p><strong>Hago:</strong> abro <code>html/lab1_observabilidad.html</code> en mi navegador,
+            ejecuto celda por celda, los SREs me siguen.</p>
+          <p><strong>Digo al equipo:</strong> "En su laptop abran <a href="../game.html">game.html</a> y marquen la Misión 1
+            cuando terminen; recién entonces se desbloquean las preguntas."</p>
+          <p><strong>Miro:</strong> que todos lleguen a la celda 5 (el boxplot log) en 8 minutos.</p>
+          <ul class="checklist">
+            <li><label><input type="checkbox" data-key="s2a"> Todos ejecutaron hasta "Celdas de insight ejecutivo".</label></li>
+            <li><label><input type="checkbox" data-key="s2b"> Alguien preguntó por qué p95 y no media.</label></li>
+            <li><label><input type="checkbox" data-key="s2c"> Cerramos el insight ejecutivo con la frase "...99.9%, checkout-api explica el burn 5x".</label></li>
+          </ul>
+          <div class="errbox">
+            <strong>Si alguien se traba en Jupyter:</strong> que use el HTML pre-renderizado
+            (<code>html/lab1_observabilidad.html</code>) y avance leyendo. La ejecución local no es crítica.
+          </div>
+          <div class="errbox">
+            <strong>Si los PNG no se ven:</strong> ya están exportados a <code>html/lab*_fig*.png</code>; recargar la página
+            (Ctrl+F5).
+          </div>
+        </div>
+      </section>
+
+      <!-- Paso 3 -->
+      <section class="step" id="s3" data-step="3">
+        <div class="step-head">
+          <div class="step-num">3</div>
+          <h3>Lab 2 guiado — Automatización</h3>
+          <span class="step-time">12 min</span>
+        </div>
+        <div class="step-body">
+          <p>Mismo ritmo. Les pido que ya en <a href="../game.html">game.html</a> marquen Misión 2 apenas terminen.
+            Apunto en mi cabeza <em>qué pregunta les cuesta más</em> para retomar después.</p>
+          <ul class="checklist">
+            <li><label><input type="checkbox" data-key="s3a"> Alguien señaló outliers arriba del bigote (jobs lentos reales).</label></li>
+            <li><label><input type="checkbox" data-key="s3b"> Conectamos MTTR con la mediana en runs fallidos.</label></li>
+            <li><label><input type="checkbox" data-key="s3c"> Pregunta disparadora: "¿Cuál job explicar el 50% del mttr?"</label></li>
+          </ul>
+          <div class="errbox">
+            <strong>Si nadie pregunta nada:</strong> lanza tú la pregunta 3 del game en voz alta: "¿Cuál es el job con
+            peor success_rate?". Esperas 30s y luego revelas la respuesta.
+          </div>
+        </div>
+      </section>
+
+      <!-- Paso 4 -->
+      <section class="step" id="s4" data-step="4">
+        <div class="step-head">
+          <div class="step-num">4</div>
+          <h3>Lab 3 hands-on — Tickets</h3>
+          <span class="step-time">12 min</span>
+        </div>
+        <div class="step-body">
+          <p><strong>Pair-programming:</strong> "Pónganse en parejas y abran el HTML de lab 3.
+            Tienen 12 min. Yo circulo."</p>
+          <p><strong>Pit-stop a los 8 min:</strong> cada dupla dice 1 hallazgo en 15 segundos.</p>
+          <ul class="checklist">
+            <li><label><input type="checkbox" data-key="s4a"> Al menos 3 dúplicas ejecutaron hasta el boxplot.</label></li>
+            <li><label><input type="checkbox" data-key="s4b"> Alguien preguntó "¿qué equipo lidera el breach?".</label></li>
+            <li><label><input type="checkbox" data-key="s4c"> Pasamos a Misión 3 en game.html y desbloqueamos sus preguntas.</label></li>
+          </ul>
+          <div class="errbox">
+            <strong>Si una dupla no termina:</strong> diles "ok, en 30 segundos anoten la causa raíz del equipo con peor breach
+            en un post-it". Que no se queden esperando.
+          </div>
+          <div class="errbox">
+            <strong>Si alguien contesta que su navegador no permite localStorage:</strong> probablemente está en modo
+            incógnito. Que abran una ventana normal.
+          </div>
+        </div>
+      </section>
+
+      <!-- Paso 5 -->
+      <section class="step" id="s5" data-step="5">
+        <div class="step-head">
+          <div class="step-num">5</div>
+          <h3>Lab 4 hands-on — Dashboard ejecutivo</h3>
+          <span class="step-time">12 min</span>
+        </div>
+        <div class="step-body">
+          <p><strong>Hago:</strong> "Vamos a la Misión 4. Lo único que les pido es redactar 1 frase ejecutiva
+            de 1 línea. Esa frase es su cierre."</p>
+          <ul class="checklist">
+            <li><label><input type="checkbox" data-key="s5a"> Cada dupla redactó su headline (1 cifra + responsable + ventana + acción).</label></li>
+            <li><label><input type="checkbox" data-key="s5b"> Pasamos a Misión 4 en game.html.</label></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Paso 6 -->
+      <section class="step" id="s6" data-step="6">
+        <div class="step-head">
+          <div class="step-num">6</div>
+          <h3>Mural + headlines compartidas</h3>
+          <span class="step-time">4 min</span>
+        </div>
+        <div class="step-body">
+          <p>Cada dupla lee su headline (15 s). Votan la más clara. La pego arriba en el chat del equipo
+            y la dejo como ejemplo para reportes semanales.</p>
+          <div class="errbox">
+            <strong>Si nadie quiere leer en voz alta:</strong> las pego en el chat y pido que elijan con
+            un emoji. Más cómodo y lo registro igual.
+          </div>
+        </div>
+      </section>
+
+      <!-- Paso 7 -->
+      <section class="step" id="s7" data-step="7">
+        <div class="step-head">
+          <div class="step-num">7</div>
+          <h3>Quiz final libre</h3>
+          <span class="step-time">5 min</span>
+        </div>
+        <div class="step-body">
+          <p>"Cada uno abre <a href="../quiz.html">quiz.html</a> y responde las 8 preguntas. Verán su XP y
+            su nivel al final."</p>
+          <p><strong>Miro:</strong> la consola del navegador (F12 → Application → Local Storage) tiene
+            <code>seti-sre-quiz-quiz</code> con las respuestas por pregunta. Cada SRE tiene su snapshot en
+            <code>seti-sre-registration</code>.</p>
+          <ul class="checklist">
+            <li><label><input type="checkbox" data-key="s7a"> Todos terminaron las 8 preguntas.</label></li>
+            <li><label><input type="checkbox" data-key="s7b"> Al menos 1 SRE llegó a nivel 3 (Wrangler) o más.</label></li>
+          </ul>
+          <div class="errbox">
+            <strong>Si la página de resultados no se ve:</strong> que abran <code>quiz.html</code> en otra pestaña.
+            Su XP se calcula al final del form.
+          </div>
+        </div>
+      </section>
+
+      <!-- Paso 8 -->
+      <section class="step" id="s8" data-step="8">
+        <div class="step-head">
+          <div class="step-num">8</div>
+          <h3>Cierre y tareas</h3>
+          <span class="step-time">3 min</span>
+        </div>
+        <div class="step-body">
+          <p><strong>Digo:</strong> "Tarea post-sesión: tomen 1 semana real de su servicio y apliquen el
+            mismo análisis: heatmap de NaN, boxplot log, headline ejecutiva. Me lo traen a la próxima 1:1."</p>
+          <p><strong>Yo, después de la sesión:</strong></p>
+          <ul>
+            <li>Reviso <code>localStorage</code> en mi navegador para sacar los snapshots de cada SRE (o los pego manualmente).</li>
+            <li>Los pego en un spreadsheet o creo un issue por SRE en el repo (activando el endpoint).</li>
+            <li>Marco en este panel los pasos hechos (el progreso queda en mi navegador).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Paso 9 -->
+      <section class="step" id="s9" data-step="9">
+        <div class="step-head">
+          <div class="step-num">9</div>
+          <h3>Plan B — si algo falla</h3>
+          <span class="step-time">según necesidad</span>
+        </div>
+        <div class="step-body">
+          <p><strong>Si JupyterLab no corre en alguna laptop:</strong></p>
+          <ul>
+            <li>Opción A (rápida): abrir el HTML pre-renderizado del lab correspondiente en <code>html/</code>.</li>
+            <li>Opción B (con plan): que se conecten a mi JupyterHub local via SSH tunnel, o abrir un notebook en <a href="https://colab.research.google.com/">Google Colab</a> con los datos subidos.</li>
+          </ul>
+          <p><strong>Si el sitio publicado no carga:</strong></p>
+          <ul>
+            <li>Verificar GitHub Pages en Settings → Pages.</li>
+            <li>Si está caído, clonar el repo y servir local: <code>python -m http.server 8000</code>.</li>
+          </ul>
+          <p><strong>Si la red está lenta:</strong></p>
+          <ul>
+            <li>Reducir el tiempo de labs guiados a 8 min.</li>
+            <li>Saltar el Lab 4 y usar solo la rúbrica del Quiz como cierre.</li>
+          </ul>
+          <p><strong>Si nadie completa el registro:</strong></p>
+          <ul>
+            <li>No es bloqueante. Tomar asistencia verbal al inicio (<em>5 min extra</em>) y trabajar sin snapshots.</li>
+          </ul>
+          <p><strong>Si el tiempo se acaba antes de los 60 min:</strong></p>
+          <ul>
+            <li>Mural + Quiz son los dos únicos pasos <em>obligatorios</em>. Labs 3 y 4 pueden comprimirse a 6 minutos cada uno.</li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <div>SETI · SRE Data Analytics · panel del facilitador</div>
+    <div><a href="../index.html">Inicio</a></div>
+  </div>
+</footer>
+
+<script src="assets/registration.js" defer></script>
+<script>
+// progreso local del checklist del panel
+var PROG_KEY = 'seti-sre-panel-progress';
+function load() {
+  try { return JSON.parse(localStorage.getItem(PROG_KEY) || '{}'); } catch (e) { return {}; }
+}
+function save(s) { localStorage.setItem(PROG_KEY, JSON.stringify(s)); }
+function paint() {
+  var s = load();
+  var boxes = document.querySelectorAll('input[type=checkbox][data-key]');
+  boxes.forEach(function (b) { b.checked = !!s[b.dataset.key]; });
+  // progreso = por step (si al menos 1 checkbox del step esta marcado)
+  var steps = document.querySelectorAll('.step');
+  var done = 0;
+  steps.forEach(function (st) {
+    var stepChecks = st.querySelectorAll('input[type=checkbox][data-key]');
+    var all = stepChecks.length;
+    var ok = 0;
+    stepChecks.forEach(function (c) { if (s[c.dataset.key]) ok++; });
+    if (all > 0 && ok >= Math.ceil(all / 2)) {
+      st.classList.add('done'); done++;
+    }
+  });
+  document.getElementById('prog').textContent = done + '/' + steps.length;
+  var pct = Math.round(100 * done / steps.length);
+  document.getElementById('prog-bar').style.width = pct + '%';
+}
+document.addEventListener('change', function (e) {
+  if (!e.target.matches('input[type=checkbox][data-key]')) return;
+  var s = load(); s[e.target.dataset.key] = e.target.checked; save(s); paint();
+});
+paint();
+</script>
+
+</body>
+</html>

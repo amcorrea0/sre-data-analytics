@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<title>SETI · SRE Data Analytics</title>
+<link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/registration.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap">
+    <div class="brand"><div class="logo">S</div> SETI · SRE Data Analytics</div>
+    <div class="links">
+      <a class="active" href="index.html">Inicio</a>
+      
+      <a href="game.html">Game</a>
+      <a href="quiz.html">Quiz</a>
+      
+      
+      
+      
+    </div>
+    
+  </div>
+    <a class="cta reg-nav-btn" href="#" onclick="event.preventDefault();window.__SETI__.openModal();" id="__SETI_OPEN_REG__">· Registrarme</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span> 60 min · 4 labs · XP & badges</span>
+    <h1>El dashboard <span class="accent">miente</span>.<br>
+        Tú vas a corregirlo en 60 minutos.</h1>
+    <p class="lede">Pandas + matplotlib + seaborn. De “disponibilidad 99.9%” a
+      “<em>checkout-api</em> explica el 60% del error budget”. Gana XP, sube de nivel
+      y termina con una <strong>headline ejecutiva</strong> lista para presentar.</p>
+    <div class="cta-row">
+      
+      <a class="btn btn-ghost" href="game.html">⏵ Empezar a jugar</a>
+      <a class="btn btn-ghost" href="quiz.html">? Quiz rápido</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num">4</div><div class="lbl">Labs</div></div>
+      <div class="stat"><div class="num">18</div><div class="lbl">Figuras</div></div>
+      <div class="stat"><div class="num">8</div><div class="lbl">Preguntas</div></div>
+      <div class="stat"><div class="num">+580 XP</div><div class="lbl">Por sesión</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- PROGRESO -->
+<section class="block">
+  <div class="wrap">
+    <h2 class="section-title">Tu progreso</h2>
+    <p class="section-sub">Marca los labs completados en esta sesión (se guarda en tu navegador).</p>
+    <div class="learn-card" style="display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
+      <div style="flex:1; min-width:240px;">
+        <div class="bar-wrap" style="margin-bottom:8px;">
+          <div class="label">XP total</div>
+          <div class="progress" style="flex:1;"><span id="xp-bar" style="width:0%"></span></div>
+          <div><strong id="xp-text">0 / 800</strong></div>
+        </div>
+        <div class="badge-row" id="badge-row">
+          <span class="chip ghost">Badge 1 · pendiente</span>
+          <span class="chip ghost">Badge 2 · pendiente</span>
+          <span class="chip ghost">Badge 3 · pendiente</span>
+          <span class="chip ghost">Badge 4 · pendiente</span>
+        </div>
+      </div>
+      <div>
+        <span class="chip ink" id="level">Nivel 0 · Aprendiz</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LABS -->
+<section class="block" style="background:var(--grey-6);">
+  <div class="wrap">
+    <h2 class="section-title">Las 4 misiones</h2>
+    <p class="section-sub">Cada lab desbloquea XP y un badge. Los hands-on valen más.</p>
+    <div class="lab-grid">
+
+      <article class="lab-card guiado" data-lab="lab1" data-xp="100" data-badge="Outlier Hunter">
+        <div class="cover">
+          <span class="num">Misión 01</span>
+          <span>Observabilidad</span>
+          <div class="ring"></div>
+        </div>
+        <span class="ribbon">Guiado · +100 XP</span>
+        <div class="body">
+          <h3>El dashboard miente</h3>
+          <p class="desc">ETL de métricas, NaN con heatmap, errores técnicos,
+            Tukey por servicio, comparativa crudo vs limpio.</p>
+          <div class="meta">
+            <span class="pill">12 min</span>
+            <span class="pill">pandas</span>
+            <span class="pill">seaborn</span>
+            <span class="pill">IQR</span>
+          </div>
+          <div class="gallery">
+            <img src="html/lab1_fig1_nan.png" alt="">
+            <img src="html/lab1_fig2_latency_dist.png" alt="">
+            <img src="html/lab1_fig3_boxplot.png" alt="">
+            <img src="html/lab1_fig4_outliers_per_service.png" alt="">
+          </div>
+        </div>
+        <div class="actions">
+          <a class="primary" href="html/lab1_observabilidad.html">Abrir lab</a>
+          <a href="labs/lab-01-observabilidad/guide.html">Guía</a>
+        </div>
+      </article>
+
+      <article class="lab-card guiado" data-lab="lab2" data-xp="120" data-badge="MTTR Specialist">
+        <div class="cover">
+          <span class="num">Misión 02</span>
+          <span>Automatización</span>
+          <div class="ring"></div>
+        </div>
+        <span class="ribbon">Guiado · +120 XP</span>
+        <div class="body">
+          <h3>¿Quién rompió el job?</h3>
+          <p class="desc">Distribución de duración, success-rate, MTTR, retries y
+            trigger ruidoso en escala log.</p>
+          <div class="meta">
+            <span class="pill">12 min</span>
+            <span class="pill">jobs</span>
+            <span class="pill">MTTR</span>
+            <span class="pill">triggers</span>
+          </div>
+          <div class="gallery">
+            <img src="html/lab2_fig1_nan.png" alt="">
+            <img src="html/lab2_fig2_boxplot.png" alt="">
+            <img src="html/lab2_fig3_success.png" alt="">
+            <img src="html/lab2_fig4_hourly.png" alt="">
+          </div>
+        </div>
+        <div class="actions">
+          <a class="primary" href="html/lab2_automatizacion.html">Abrir lab</a>
+          <a href="labs/lab-02-automatizacion/guide.html">Guía</a>
+        </div>
+      </article>
+
+      <article class="lab-card hands" data-lab="lab3" data-xp="160" data-badge="Demand Wrangler">
+        <div class="cover">
+          <span class="num">Misión 03</span>
+          <span>Tickets</span>
+          <div class="ring"></div>
+        </div>
+        <span class="ribbon">Hands-on · +160 XP</span>
+        <div class="body">
+          <h3>¿Quién nos está ahogando?</h3>
+          <p class="desc">Heatmap team × category, boxplot log por equipo,
+            breach SLA y rollback.</p>
+          <div class="meta">
+            <span class="pill">12 min</span>
+            <span class="pill">SLA</span>
+            <span class="pill">rollback</span>
+            <span class="pill">pivot</span>
+          </div>
+          <div class="gallery">
+            <img src="html/lab3_fig1_nan.png" alt="">
+            <img src="html/lab3_fig2_daily.png" alt="">
+            <img src="html/lab3_fig3_heatmap.png" alt="">
+            <img src="html/lab3_fig4_boxplot.png" alt="">
+          </div>
+        </div>
+        <div class="actions">
+          <a class="primary" href="html/lab3_requerimientos.html">Abrir lab</a>
+          <a href="labs/lab-03-requerimientos/guide.html">Guía</a>
+        </div>
+      </article>
+
+      <article class="lab-card hands" data-lab="lab4" data-xp="200" data-badge="Storyteller">
+        <div class="cover">
+          <span class="num">Misión 04</span>
+          <span>Dashboard ejecutivo</span>
+          <div class="ring"></div>
+        </div>
+        <span class="ribbon">Hands-on · +200 XP</span>
+        <div class="body">
+          <h3>De números a historia</h3>
+          <p class="desc">4 secciones listas para presentar + RICE para priorizar
+            acciones y redactar la headline final.</p>
+          <div class="meta">
+            <span class="pill">12 min</span>
+            <span class="pill">RICE</span>
+            <span class="pill">headline</span>
+            <span class="pill">cierre</span>
+          </div>
+          <div class="gallery">
+            <img src="html/lab4_fig1_avail.png" alt="">
+            <img src="html/lab4_fig2_auto.png" alt="">
+            <img src="html/lab4_fig3_ops.png" alt="">
+          </div>
+        </div>
+        <div class="actions">
+          <a class="primary" href="html/lab4_ejecutivo.html">Abrir lab</a>
+          <a href="labs/lab-04-ejecutivo/guide.html">Guía</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO EMPEZAR -->
+<section class="block">
+  <div class="wrap">
+    <h2 class="section-title">Cómo empezar</h2>
+    <p class="section-sub">3 pasos antes de la sesión.</p>
+    <div class="lab-grid">
+      <div class="learn-card">
+        <h3>1 · Setup (5 min)</h3>
+        <pre><code>python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+python notebooks\generate_data.py</code></pre>
+      </div>
+      <div class="learn-card">
+        <h3>2 · Sigue al facilitador</h3>
+        <p>Proyectamos ; tú ejecutas
+          <a href="notebooks/lab1_observabilidad.ipynb">lab1</a> y
+          <a href="notebooks/lab2_automatizacion.ipynb">lab2</a> en Jupyter.</p>
+      </div>
+      <div class="learn-card">
+        <h3>3 · Tú al mando</h3>
+        <p>En <a href="notebooks/lab3_requerimientos.ipynb">lab3</a> y
+          <a href="notebooks/lab4_ejecutivo.ipynb">lab4</a> trabajas en parejas
+          y presentas tu headline al cierre.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECURSOS -->
+<section class="block" style="background:var(--grey-6);">
+  <div class="wrap">
+    <h2 class="section-title">Recursos para el equipo</h2>
+    <div class="lab-grid">
+      <div class="learn-card">
+        <h3>Story</h3>
+        <p>Arco narrativo 3 actos + ritmo emocional de la sesión.</p>
+        <p></p>
+      </div>
+      <div class="learn-card">
+        <h3>Facilitador</h3>
+        <p>Agenda cronometrada + prompts de discusión + señales de éxito.</p>
+        <p></p>
+      </div>
+      <div class="learn-card">
+        <h3>Game</h3>
+        <p>Preguntas en línea por lab. Ganas XP y desbloqueas badges.</p>
+        <p><a href="game.html">Jugar →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div>SETI · SRE Data Analytics · blanco + grises + rojos · hecho con pandas & seaborn</div>
+    <div><a href="https://app.lab10.ai/aprende" rel="noopener">Inspirado en lab10</a></div>
+  </div>
+</footer>
+
+<script>
+// progreso local por navegador
+const STORAGE = 'seti-sre-progress';
+function load() {
+  try { return JSON.parse(localStorage.getItem(STORAGE)) || {}; } catch { return {}; }
+}
+function save(s) { localStorage.setItem(STORAGE, JSON.stringify(s)); }
+function paint() {
+  const s = load();
+  let xp = 0;
+  document.querySelectorAll('.lab-card').forEach(card => {
+    const lab = card.dataset.lab;
+    if (s[lab]) {
+      xp += +card.dataset.xp;
+      card.style.borderColor = 'var(--red-5)';
+      card.querySelector('.ribbon').textContent = '✓ ' + card.dataset.badge;
+      card.querySelector('.ribbon').style.background = 'var(--red-7)';
+    }
+  });
+  const max = 580, pct = Math.min(100, Math.round(100 * xp / max));
+  document.getElementById('xp-bar').style.width = pct + '%';
+  document.getElementById('xp-text').textContent = xp + ' / ' + max;
+  const lvl = xp >= 580 ? 'Nivel 4 · Storyteller'
+            : xp >= 380 ? 'Nivel 3 · Wrangler'
+            : xp >= 220 ? 'Nivel 2 · Specialist'
+            : xp >= 100 ? 'Nivel 1 · Hunter'
+            : 'Nivel 0 · Aprendiz';
+  document.getElementById('level').textContent = lvl;
+
+  const badges = [...document.querySelectorAll('.lab-card')]
+    .filter(c => s[c.dataset.lab]).map(c => c.dataset.badge);
+  const row = document.getElementById('badge-row');
+  row.innerHTML = '';
+  for (let i = 1; i <= 4; i++) {
+    const lab = ['lab1','lab2','lab3','lab4'][i - 1];
+    const card = document.querySelector(`.lab-card[data-lab="${lab}"]`);
+    const name = card.dataset.badge;
+    const earned = s[lab];
+    const span = document.createElement('span');
+    span.className = 'chip ' + (earned ? 'red' : 'ghost');
+    span.textContent = `Badge ${i} · ${name}` + (earned ? ' ✓' : ' · pendiente');
+    row.appendChild(span);
+  }
+}
+document.querySelectorAll('.lab-card').forEach(card => {
+  card.addEventListener('click', (e) => {
+    // sólo toggle si el click NO fue en un enlace
+    if (e.target.closest('a')) return;
+    const s = load();
+    s[card.dataset.lab] = !s[card.dataset.lab];
+    save(s); paint();
+  });
+});
+paint();
+</script>
+
+  <script src="assets/registration.js" defer></script>
+</body>
+</html>

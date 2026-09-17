@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 2 — Guía del estudiante — SETI · SRE Data Analytics</title>
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  /* prose-page solo para el contenido renderizado */
+  .prose-page { max-width: 920px; margin: 0 auto; padding: 56px 28px 96px; }
+  .prose-page h1 { font-size: clamp(2rem, 4vw, 2.8rem); margin: 0 0 8px; letter-spacing: -.02em; }
+  .prose-page > p { color: var(--grey-2); margin: 4px 0 0; max-width: 720px; }
+  .prose-page h2 { font-size: 1.4rem; margin-top: 36px; border-bottom: 1px solid var(--grey-5); padding-bottom: 6px; }
+  .prose-page h3 { font-size: 1.12rem; margin-top: 28px; color: var(--red-7); }
+  .prose-page h1 + h2 { margin-top: 32px; }
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+<div class="brand"><div class="logo">S</div> SETI · SRE Data Analytics</div>
+<div class="links">
+<a href="../../index.html">Inicio</a>
+<a href="../../index.html">Misiones</a>
+<a href="../../game.html">Game</a>
+<a href="../../quiz.html">Quiz</a>
+</div>
+<a class="cta" href="../../index.html">Empezar</a>
+</div></nav>
+<header class="hero" style="padding: 56px 28px 56px;">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span> Misión 2 · Guiado · 12 min</span>
+    <h1>Lab 2 — Guía del estudiante</h1>
+    
+  </div>
+</header>
+<article class="prose-page">
+<h1 id="lab-2-automatizacion-jobs-mttr-outliers-de-duracion-guiado">Lab 2 — Automatización: jobs, MTTR, outliers de duración (guiado)</h1>
+<h2 id="datos-faltantes-y-como-arreglarlos">Datos faltantes y cómo arreglarlos</h2>
+<table>
+<thead>
+<tr>
+<th>Columna</th>
+<th>Problema</th>
+<th>Tratamiento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>duration_sec</code></td>
+<td>~0.5% NaN + <strong>1%</strong> con valores <code>&lt; 0</code> o <code>&gt; 86400</code></td>
+<td>drop imposibles, NaN → <strong>mediana del job</strong></td>
+</tr>
+<tr>
+<td><code>job_name</code></td>
+<td>~0.3% NaN</td>
+<td>NaN → <strong>moda</strong> global</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Truco: la imputación por grupo (mediana por <code>job_name</code>) preserva la forma del boxplot
+por job. Imputar con la mediana <strong>global</strong> mezclaría escalas.</p>
+</blockquote>
+<h2 id="figuras-y-como-interpretarlas">Figuras y cómo interpretarlas</h2>
+<ol>
+<li><strong><code>fig1_nan.png</code></strong> — Heatmap de NaN. Si no hay bandas verticales, está limpio.</li>
+<li><strong><code>fig2_boxplot.png</code></strong> — Boxplot por job (eje log). Caja = Q1–Q3, rayita = mediana,
+   bigotes = Tukey. Puntos fuera = jobs lentos.</li>
+<li><strong><code>fig3_success.png</code></strong> — Tasa de éxito. La barra corta == job problematico.</li>
+<li><strong><code>fig4_hourly.png</code></strong> — Runs por hora del dia. Picos nocturnos == batch.</li>
+<li><strong><code>fig5_trigger.png</code></strong> — Pie de triggers + barras de success-rate. Un trigger
+   con alta participacion <strong>y</strong> baja tasa es candidato a automatizar mejor.</li>
+</ol>
+<h2 id="decision-rapida">Decisión rápida</h2>
+<ul>
+<li>Outlier <strong>arriba</strong> del bigote: job lento real -&gt; optimizar.</li>
+<li>Valor <strong>negativo o &gt; 24 h</strong>: error técnico -&gt; drop y abrir bug del exporter.</li>
+</ul>
+</article>
+<footer class="site">
+<div class="wrap">
+<div>SETI · SRE Data Analytics · blanco + grises + rojos</div>
+<div><a href="../../index.html">Inicio</a></div>
+</div></footer>
+</body>
+</html>
