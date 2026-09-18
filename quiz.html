@@ -149,15 +149,7 @@
         <div class="feedback"></div>
       </div>
 
-      <div style="display:flex; gap:10px; margin: 24px 0;">
-        <button type="button" id="submit" class="btn btn-primary">Ver resultado</button>
-        <button type="button" id="reset"  class="btn btn-ghost" style="color:var(--ink-1); border-color:var(--grey-4); background:var(--paper);">Reiniciar</button>
-      </div>
 
-      <div class="learn-card" id="score-card" style="display:none;">
-        <h3>Tu resultado</h3>
-        <p id="score-line" style="font-size:1.2rem;"></p>
-        <div class="badge-row" id="rubric"></div>
       </div>
     <div class="qcard" data-q="q9" data-lab="lab3" data-correct="c" data-xp="80">
         <h3>9 · Lab 3 - Tickets</h3>
@@ -171,21 +163,9 @@
         <div class="feedback"></div>
       </div>
 
-      </form>
+      
 
-    <details style="margin-top: 24px;">
-      <summary><strong>Mostrar respuestas correctas y explicaciones</strong></summary>
-      <ol>
-        <li><b>1B</b> — Bandas = patrón sistemático.</li>
-        <li><b>2C</b> — La mediana no se mueve con outliers.</li>
-        <li><b>3A</b> — Solo arriba = outlier real unilateral.</li>
-        <li><b>4D</b> — MTTR = mediana en runs fallidos.</li>
-        <li><b>5C</b> — Tiempos ≤ 0 no son válidos: drop + bug del exporter.</li>
-        <li><b>6B</b> — Cola larga ⇒ log.</li>
-        <li><b>7C</b> — Cifra + responsable + ventana + acción.</li>
-        <li><b>8B</b> — RICE prioriza donde invertir esfuerzo.</li>
-      </ol>
-    </details>
+    
   </div>
 </section>
 
@@ -308,6 +288,34 @@ document.getElementById('reset').addEventListener('click', () => {
   });
 })();
 </script>
+
+          <div style="display:flex; gap:10px; margin: 24px 0;">
+        <button type="button" id="submit" class="btn btn-primary">Ver resultado</button>
+        <button type="button" id="reset" class="btn btn-ghost" style="color:var(--ink-1); border-color:var(--grey-4); background:var(--paper);">Reiniciar</button>
+      </div>
+
+      <div class="learn-card" id="score-card" style="display:none;">
+        <h3>Tu resultado</h3>
+        <p id="score-line" style="font-size:1.2rem;"></p>
+        <div class="badge-row" id="rubric"></div>
+      </div>
+</form>
+
+
+<details style="margin-top: 24px;">
+  <summary><strong>Mostrar respuestas correctas y explicaciones (las 9)</strong></summary>
+  <ol>
+    <li><b>1B</b> &mdash; Bandas = patron sistematico (sensor, exportador, batch).</li>
+    <li><b>2C</b> &mdash; La mediana no se mueve con outliers ni con errores tecnicos.</li>
+    <li><b>3A</b> &mdash; Solo arriba del bigote = outlier real unilateral (job lento, no bug).</li>
+    <li><b>4D</b> &mdash; MTTR = mediana de duracion en runs con status failed/timeout.</li>
+    <li><b>5C</b> &mdash; Tiempos &le; 0 no son validos fisicamente: drop + abrir bug del exporter.</li>
+    <li><b>6B</b> &mdash; Distribucion muy asimetrica (minutos y dias conviven): la escala log permite verlos juntos.</li>
+    <li><b>7C</b> &mdash; Cifra grande + responsable + ventana de tiempo + accion priorizada.</li>
+    <li><b>8B</b> &mdash; RICE = Reach x Impact / Effort: prioriza acciones con mejor retorno por unidad de esfuerzo.</li>
+    <li><b>9C</b> &mdash; Picos claros lunes 9-11am = rotar turnos del equipo (en lugar de contratar mas gente).</li>
+  </ol>
+</details>
 
 </body>
 </html>
