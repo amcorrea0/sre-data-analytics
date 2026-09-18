@@ -85,8 +85,8 @@
 
       <div class="qcard" data-q="q3" data-lab="lab2" data-correct="a" data-xp="100">
         <h3>3 · Lab 2 — Automatización</h3>
-        <p class="qmeta">Boxplot en escala log</p>
-        <p>Si ves puntos solo <strong>arriba</strong> del bigote superior en <code>duration_sec</code>, indica:</p>
+        <p class="qmeta">Boxplot en escala log (minutos)</p>
+        <p>Si ves puntos solo <strong>arriba</strong> del bigote superior en el boxplot de <code>duration_min</code> (en escala log), indica:</p>
         <label class="opt" data-v="a"><input type="radio" name="q3" value="a" hidden><span class="ltr">A</span> Jobs lentos reales: candidato a optimizar.</label>
         <label class="opt" data-v="b"><input type="radio" name="q3" value="b" hidden><span class="ltr">B</span> Jobs normales.</label>
         <label class="opt" data-v="c"><input type="radio" name="q3" value="c" hidden><span class="ltr">C</span> Datos corruptos del exporter.</label>
@@ -118,8 +118,8 @@
 
       <div class="qcard" data-q="q6" data-lab="lab3" data-correct="b" data-xp="120">
         <h3>6 · Lab 3 — Tickets</h3>
-        <p class="qmeta">Escala</p>
-        <p>¿Por qué usamos <strong>escala log</strong> en el boxplot de <code>resolution_min</code> por equipo?</p>
+        <p class="qmeta">Escala (horas)</p>
+        <p>¿Por qué usamos <strong>escala log</strong> en el boxplot de <code>resolution_h</code> (horas) por equipo?</p>
         <label class="opt" data-v="a"><input type="radio" name="q6" value="a" hidden><span class="ltr">A</span> Las medianas son iguales.</label>
         <label class="opt" data-v="b"><input type="radio" name="q6" value="b" hidden><span class="ltr">B</span> Distribución muy asimétrica: minutos y días conviven.</label>
         <label class="opt" data-v="c"><input type="radio" name="q6" value="c" hidden><span class="ltr">C</span> El CSV pesa menos.</label>
@@ -159,7 +159,19 @@
         <p id="score-line" style="font-size:1.2rem;"></p>
         <div class="badge-row" id="rubric"></div>
       </div>
-    </form>
+    <div class="qcard" data-q="q9" data-lab="lab3" data-correct="c" data-xp="80">
+        <h3>9 · Lab 3 - Tickets</h3>
+        <p class="qmeta">Heatmap dia x hora</p>
+        <p>Si el heatmap de tickets por dia x hora muestra picos claros lunes 9-11am,
+        ¿qué decisión operativa sugieres?</p>
+        <label class="opt" data-v="a"><input type="radio" name="q9" value="a" hidden><span class="ltr">A</span> Contratar 2 personas más.</label>
+        <label class="opt" data-v="b"><input type="radio" name="q9" value="b" hidden><span class="ltr">B</span> Renovar la base de datos.</label>
+        <label class="opt" data-v="c"><input type="radio" name="q9" value="c" hidden><span class="ltr">C</span> Rotar turnos del equipo para cubrir la franja pico.</label>
+        <label class="opt" data-v="d"><input type="radio" name="q9" value="d" hidden><span class="ltr">D</span> Apagar el sistema en finde.</label>
+        <div class="feedback"></div>
+      </div>
+
+      </form>
 
     <details style="margin-top: 24px;">
       <summary><strong>Mostrar respuestas correctas y explicaciones</strong></summary>
@@ -198,7 +210,7 @@ const EXPLAIN = {
 
 let xp = 0, answered = 0;
 const total = 8;
-const XP_TOTAL = 900; // 80+80+100+100+120+120+150+150
+const XP_TOTAL = 980; // 80+80+100+100+120+120+150+150+80
 function paintProgress() {
   const pct = Math.round(100 * answered / total);
   document.getElementById('bar').style.width = pct + '%';

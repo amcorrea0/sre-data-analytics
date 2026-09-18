@@ -105,8 +105,8 @@ LEARN_TPL = """<section class="block" style="padding-top: 32px;">
 
 FOOTER_TPL = """<footer class="site">
 <div class="wrap">
-<div>SETI · SRE Data Analytics · blanco + grises + rojos</div>
-<div><a href="../index.html">Inicio</a> · <a href="../slides.html">Deck</a> · <a href="../game.html">Game</a></div>
+<div>&copy; 2026 &middot; SETI &middot; SRE Data Analytics</div>
+<div><a href="../index.html">Inicio</a></div>
 </div></footer>"""
 
 CSS_LINK = '<link rel="stylesheet" href="../assets/style.css">'

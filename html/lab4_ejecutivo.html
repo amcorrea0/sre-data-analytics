@@ -7800,7 +7800,6 @@ a.anchor-link {
 <a href="../index.html">Inicio</a>
 <a href="../game.html">Game</a>
 <a href="../quiz.html">Quiz</a>
-<a href="../labs/lab-04-ejecutivo/README.md">Guía</a>
 </div>
 <a class="cta" href="../game.html">Modo game →</a>
 </div></nav><header class="hero" style="padding: 48px 28px 56px;">
@@ -7814,39 +7813,39 @@ para ganar XP y el badge <strong>Storyteller</strong>.</p>
 <a class="btn btn-primary" href="../game.html">🎮 Jugar Misión 4</a>
 <a class="btn btn-ghost" href="../game.html">Modo game →</a>
 </div>
-</div></header><section class="block" style="padding-top:24px;"><div class="wrap"><div class="toc"><h3>Tabla de contenidos</h3><ol><li style="margin-left:0px;"><a href="#h1">El caso de negocio¶</a></li><li style="margin-left:0px;"><a href="#h2">0. Carga + limpieza minima del dashboard¶</a></li><li style="margin-left:0px;"><a href="#h3">1) Disponibilidad y SLOs¶</a></li><li style="margin-left:0px;"><a href="#h4">2) Automatizacion - reescribimos o esperamos?¶</a></li><li style="margin-left:0px;"><a href="#h5">3) Demanda operativa - donde reforzamos?¶</a></li><li style="margin-left:0px;"><a href="#h6">4) Recomendacion RICE¶</a></li><li style="margin-left:0px;"><a href="#h7">Headline ejecutiva - tu version final¶</a></li></ol></div></div></section><section class="block" style="padding-top: 32px;">
+</div></header><section class="block" style="padding-top:24px;"><div class="wrap"><div class="toc"><h3>Tabla de contenidos</h3><ol><li style="margin-left:0px;"><a href="#h1">El caso de negocio¶</a></li><li style="margin-left:0px;"><a href="#h2">0. Carga + limpieza minima del dashboard¶</a></li><li style="margin-left:0px;"><a href="#h3">1) Disponibilidad y SLOs - ¿estamos cumpliendo lo prometido?¶</a></li><li style="margin-left:0px;"><a href="#h4">2) Automatizacion - reescribimos o esperamos?¶</a></li><li style="margin-left:0px;"><a href="#h5">3) Demanda operativa - donde reforzamos?¶</a></li><li style="margin-left:0px;"><a href="#h6">4) Recomendacion RICE - que hacer primero¶</a></li><li style="margin-left:0px;"><a href="#h7">5) Decisiones como especialista (no solo datos)¶</a></li><li style="margin-left:0px;"><a href="#h8">6) Headline ejecutiva final¶</a></li></ol></div></div></section><section class="block" style="padding-top: 32px;">
 <div class="wrap"><div class="learn-card">
 <h3>🎯 Lo que aprendes en este lab</h3>
 <ul><li>Consolidar 5 datasets en 4 secciones listas para presentar.</li><li>Calcular disponibilidad observada y burn-rate medio.</li><li>Priorizar acciones con score RICE.</li><li>Redactar una headline ejecutiva de 1 línea.</li></ul>
 </div></div></section><div class="lab-shell">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=46d7bdd5">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=11933f0f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1>Lab 4 - Dashboard ejecutivo: lo que cuenta la historia<a class="anchor-link" href="#Lab-4---Dashboard-ejecutivo:-lo-que-cuenta-la-historia">¶</a></h1><p><strong>Modalidad:</strong> hands-on - <strong>Duracion:</strong> ~12 min</p>
-<h2 id="h1" data-toc>El caso de negocio<a class="anchor-link" href="#El-caso-de-negocio">¶</a></h2><p>El CFO nos pide en una sola pagina:</p>
+<h1>Lab 4 - Dashboard ejecutivo: decisiones con datos</h1><p><strong>Modalidad:</strong> hands-on (en parejas) - <strong>Duracion:</strong> ~12 min</p>
+<h2 id="h1" data-toc>El caso de negocio</h2><p>El CFO nos pide en una sola pagina:</p>
 <blockquote>
 <p>«¿Compramos capacidad o la reducimos? ¿Reescribimos jobs? ¿Reforzamos equipos? ¿Cuanto nos cuesta la indisponibilidad?»</p>
 </blockquote>
-<p>Esta pagina es la respuesta. 4 secciones, 1 cifra cada una.</p>
+<p>Este dashboard es la respuesta. 4 KPIs uno por seccion, cada uno con una recomendacion como especialista.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0f32fc39">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ba0f6ccf">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="h2" data-toc>0. Carga + limpieza minima del dashboard<a class="anchor-link" href="#0.-Carga-+-limpieza-minima-del-dashboard">¶</a></h2>
+<h2 id="h2" data-toc>0. Carga + limpieza minima del dashboard</h2>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=2a6d0592">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=2d552e0c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7865,6 +7864,7 @@ para ganar XP y el badge <strong>Storyteller</strong>.</p>
 <span class="n">DATA</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">'..'</span><span class="p">)</span> <span class="o">/</span> <span class="s1">'data'</span>
 <span class="n">metrics</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">DATA</span> <span class="o">/</span> <span class="s1">'metrics_timeseries.csv'</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">'ts'</span><span class="p">])</span>
 <span class="n">incidents</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">DATA</span> <span class="o">/</span> <span class="s1">'incidents.csv'</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">'opened_at'</span><span class="p">,</span> <span class="s1">'resolved_at'</span><span class="p">])</span>
+<span class="n">burn</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">DATA</span> <span class="o">/</span> <span class="s1">'slo_burn.csv'</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">'ts'</span><span class="p">])</span>
 <span class="n">runs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">DATA</span> <span class="o">/</span> <span class="s1">'automation_runs.csv'</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">'started_at'</span><span class="p">])</span>
 <span class="n">tickets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">DATA</span> <span class="o">/</span> <span class="s1">'tickets.csv'</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">'created_at'</span><span class="p">])</span>
 
@@ -7882,17 +7882,17 @@ para ganar XP y el badge <strong>Storyteller</strong>.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4947c282">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=80bc043a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="h3" data-toc>1) Disponibilidad y SLOs<a class="anchor-link" href="#1)-Disponibilidad-y-SLOs">¶</a></h2><p><strong>Que decidimos:</strong> si la disponibilidad observada esta por debajo del SLO (99.9%), hay que invertir en confiabilidad. Si esta por encima, podemos mover presupuesto a feature work.</p>
+<h2 id="h3" data-toc>1) Disponibilidad y SLOs - ¿estamos cumpliendo lo prometido?</h2><p><strong>Que decidimos:</strong> si la disponibilidad observada esta por debajo del SLO (99.9%), hay que invertir en confiabilidad. Si esta por encima, podemos mover presupuesto a feature work.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8a217878">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ca2197f9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7901,11 +7901,12 @@ para ganar XP y el badge <strong>Storyteller</strong>.</p>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">avail</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">metrics</span><span class="p">[</span><span class="s1">'error_rate'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">burn_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">DATA</span> <span class="o">/</span> <span class="s1">'slo_burn.csv'</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">'ts'</span><span class="p">])</span>
-<span class="n">burn_max</span> <span class="o">=</span> <span class="n">burn_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'incident_id'</span><span class="p">)[</span><span class="s1">'burn_5x'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">burn_max</span> <span class="o">=</span> <span class="n">burn</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'incident_id'</span><span class="p">)[</span><span class="s1">'burn_5x'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Disponibilidad observada: </span><span class="si">{</span><span class="n">avail</span><span class="si">:</span><span class="s1">.4%</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Burn-rate 5x medio: </span><span class="si">{</span><span class="n">burn_max</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">x'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Burn-rate 5x medio en incidentes: </span><span class="si">{</span><span class="n">burn_max</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">x'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'SLO objetivo: 99.9%'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Cumplimos SLO: </span><span class="si">{</span><span class="n">avail</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">0.999</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">top3</span> <span class="o">=</span> <span class="n">incidents</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">'customers_affected'</span><span class="p">)[[</span><span class="s1">'service'</span><span class="p">,</span> <span class="s1">'customers_affected'</span><span class="p">,</span> <span class="s1">'mttr_min'</span><span class="p">]]</span>
 <span class="n">top3</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'service'</span><span class="p">)[</span><span class="s1">'customers_affected'</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">'bar'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'#b30015'</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
@@ -7927,8 +7928,9 @@ para ganar XP y el badge <strong>Storyteller</strong>.</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Disponibilidad observada: 99.7727%
-Burn-rate 5x medio: 2.44x
-
+Burn-rate 5x medio en incidentes: 2.44x
+SLO objetivo: 99.9%
+Cumplimos SLO: False
 </pre>
 </div>
 </div>
@@ -7941,17 +7943,17 @@ Burn-rate 5x medio: 2.44x
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6acf08c0">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0274458b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="h4" data-toc>2) Automatizacion - reescribimos o esperamos?<a class="anchor-link" href="#2)-Automatizacion---reescribimos-o-esperamos?">¶</a></h2><p><strong>Que decidimos:</strong> si el success rate global esta bajo 95%, hay que reescribir jobs prioritarios. Si esta sobre 99%, podemos recortar personal.</p>
+<h2 id="h4" data-toc>2) Automatizacion - reescribimos o esperamos?</h2><p><strong>Que decidimos:</strong> si el success rate global esta bajo 95%, hay que reescribir jobs prioritarios. Si esta sobre 99%, podemos recortar personal.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8e28210c">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e1a4ce57">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7961,10 +7963,10 @@ Burn-rate 5x medio: 2.44x
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">auto_ok</span> <span class="o">=</span> <span class="p">(</span><span class="n">runs</span><span class="p">[</span><span class="s1">'status'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'success'</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">failed</span> <span class="o">=</span> <span class="n">runs</span><span class="p">[</span><span class="n">runs</span><span class="p">[</span><span class="s1">'status'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">'failed'</span><span class="p">,</span><span class="s1">'timeout'</span><span class="p">])]</span>
-<span class="n">mttr_per_job</span> <span class="o">=</span> <span class="n">failed</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'job_name'</span><span class="p">)[</span><span class="s1">'duration_sec'</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">mttr_per_job</span> <span class="o">=</span> <span class="n">failed</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'job_name'</span><span class="p">)[</span><span class="s1">'duration_sec'</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span> <span class="o">/</span> <span class="mi">60</span>  <span class="c1"># minutos</span>
 <span class="n">worst_job</span> <span class="o">=</span> <span class="n">mttr_per_job</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Success rate global: </span><span class="si">{</span><span class="n">auto_ok</span><span class="si">:</span><span class="s1">.2%</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Job con peor MTTR:</span><span class="se">\n</span><span class="si">{</span><span class="n">worst_job</span><span class="si">}</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Job con peor MTTR: </span><span class="si">{</span><span class="n">worst_job</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">worst_job</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> min)</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">agg</span> <span class="o">=</span> <span class="n">runs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'job_name'</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
@@ -7993,10 +7995,7 @@ Burn-rate 5x medio: 2.44x
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Success rate global: 88.27%
-Job con peor MTTR:
-job_name
-failover_drill    189.5
-Name: duration_sec, dtype: float64
+Job con peor MTTR: failover_drill (3.2 min)
 
 </pre>
 </div>
@@ -8010,17 +8009,17 @@ Name: duration_sec, dtype: float64
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=463f9e9d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dccecc48">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="h5" data-toc>3) Demanda operativa - donde reforzamos?<a class="anchor-link" href="#3)-Demanda-operativa---donde-reforzamos?">¶</a></h2><p><strong>Que decidimos:</strong> si un equipo lidera el breach + la carga, hay que reforzar. Si lidera el rollback, hay que mejorar el proceso de cambios.</p>
+<h2 id="h5" data-toc>3) Demanda operativa - donde reforzamos?</h2><p><strong>Que decidimos:</strong> si un equipo lidera el breach + la carga, hay que reforzar. Si lidera el rollback, hay que mejorar el proceso de cambios.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8970379e">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1e8a32a8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8032,7 +8031,7 @@ Name: duration_sec, dtype: float64
 <span class="n">vol</span> <span class="o">=</span> <span class="n">tickets</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'date'</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">rollback_rate</span> <span class="o">=</span> <span class="n">tickets</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">tickets</span><span class="p">[</span><span class="s1">'category'</span><span class="p">]</span><span class="o">==</span><span class="s1">'change'</span><span class="p">,</span> <span class="s1">'rollback'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Tickets/dia promedio: </span><span class="si">{</span><span class="n">vol</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Rollback rate (changes): </span><span class="si">{</span><span class="n">rollback_rate</span><span class="si">:</span><span class="s1">.2%</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Rollback rate (changes): </span><span class="si">{</span><span class="n">rollback_rate</span><span class="si">:</span><span class="s1">.2%</span><span class="si">}</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">tickets</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'team'</span><span class="p">)[</span><span class="s1">'sla_breached'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">'bar'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'#b30015'</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
@@ -8057,6 +8056,7 @@ Name: duration_sec, dtype: float64
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Tickets/dia promedio: 19.1
 Rollback rate (changes): 7.80%
+
 </pre>
 </div>
 </div>
@@ -8069,17 +8069,17 @@ Rollback rate (changes): 7.80%
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d4c68212">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fea58f78">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="h6" data-toc>4) Recomendacion RICE<a class="anchor-link" href="#4)-Recomendacion-RICE">¶</a></h2><p><strong>Que decidimos:</strong> priorizamos las acciones donde RICE = (Reach x Impact) / Effort es mayor.</p>
+<h2 id="h6" data-toc>4) Recomendacion RICE - que hacer primero</h2><p><strong>Que decidimos:</strong> priorizamos las acciones donde RICE = (Reach x Impact) / Effort es mayor.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=36efe40e">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=da0a1aaa">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8088,10 +8088,10 @@ Rollback rate (changes): 7.80%
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">recos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
-    <span class="p">{</span><span class="s1">'accion'</span><span class="p">:</span> <span class="s1">'Comprar capacidad para checkout-api'</span><span class="p">,</span> <span class="s1">'reach'</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">'impact'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">'effort'</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">'accion'</span><span class="p">:</span> <span class="s1">'Comprar capacidad para servicio saturado'</span><span class="p">,</span> <span class="s1">'reach'</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">'impact'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">'effort'</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
     <span class="p">{</span><span class="s1">'accion'</span><span class="p">:</span> <span class="s1">'Reescribir job con peor MTTR'</span><span class="p">,</span> <span class="s1">'reach'</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">'impact'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">'effort'</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
     <span class="p">{</span><span class="s1">'accion'</span><span class="p">:</span> <span class="s1">'Reforzar equipo con mas breach'</span><span class="p">,</span> <span class="s1">'reach'</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">'impact'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">'effort'</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
-    <span class="p">{</span><span class="s1">'accion'</span><span class="p">:</span> <span class="s1">'Implementar auto-scaling lunes 9-11am'</span><span class="p">,</span> <span class="s1">'reach'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">'impact'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'effort'</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">'accion'</span><span class="p">:</span> <span class="s1">'Implementar auto-scaling en horas pico'</span><span class="p">,</span> <span class="s1">'reach'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">'impact'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'effort'</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
 <span class="p">])</span>
 <span class="n">recos</span><span class="p">[</span><span class="s1">'rice'</span><span class="p">]</span> <span class="o">=</span> <span class="n">recos</span><span class="p">[</span><span class="s1">'reach'</span><span class="p">]</span> <span class="o">*</span> <span class="n">recos</span><span class="p">[</span><span class="s1">'impact'</span><span class="p">]</span> <span class="o">/</span> <span class="n">recos</span><span class="p">[</span><span class="s1">'effort'</span><span class="p">]</span>
 <span class="n">recos</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'rice'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -8135,7 +8135,7 @@ Rollback rate (changes): 7.80%
 <tbody>
 <tr>
 <th>3</th>
-<td>Implementar auto-scaling lunes 9-11am</td>
+<td>Implementar auto-scaling en horas pico</td>
 <td>8</td>
 <td>2</td>
 <td>1</td>
@@ -8143,7 +8143,7 @@ Rollback rate (changes): 7.80%
 </tr>
 <tr>
 <th>0</th>
-<td>Comprar capacidad para checkout-api</td>
+<td>Comprar capacidad para servicio saturado</td>
 <td>9</td>
 <td>4</td>
 <td>3</td>
@@ -8173,13 +8173,65 @@ Rollback rate (changes): 7.80%
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8c0f250e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=eda93c1c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="h7" data-toc>Headline ejecutiva - tu version final<a class="anchor-link" href="#Headline-ejecutiva---tu-version-final">¶</a></h2><p>Redacta en una linea por seccion (cifra + responsable + ventana + accion). Esta es la frase que leeras al CFO.</p>
+<h2 id="h7" data-toc>5) Decisiones como especialista (no solo datos)</h2><p>Mirando los datos y mi experiencia operativa, estas son las recomendaciones que llevaria al CFO:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Tema</th>
+<th>Recomendacion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Capacidad</strong></td>
+<td>Comprar nodos para servicio con <code>CPU p95 &gt; 80%</code> con reserva anual (ahorra 30% vs on-demand).</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Confiabilidad</strong></td>
+<td>Si disponibilidad &lt; 99.9%, invertir el 20% del tiempo del equipo en reducir incidentes recurrentes.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Automatizacion</strong></td>
+<td>Reescribir el job con peor MTTR. Cada hora que se demora un job = N retries = N tiempo de operador.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Operacion</strong></td>
+<td>Rotar turnos lunes-viernes 9-11am para absorber la demanda visible en los heatmaps (en vez de contratar mas gente).</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Cambios</strong></td>
+<td>Si rollback &gt; 15%, hacer postmortem del proceso de cambios antes de tocar mas infraestructura.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>No compres tecnologia si antes no eliminaste lo que esta roto.</strong></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2632fc00">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="h8" data-toc>6) Headline ejecutiva final</h2><p>Tu presentacion al CFO en 4 frases (1 por seccion):</p>
+<p><strong>Disponibilidad:</strong> «Disponibilidad observada del <strong>X%</strong>; cumplimos SLO de 99.9% [Si/No]. El top 3 de incidentes impacto a <strong>N</strong> clientes.»</p>
+<p><strong>Automatizacion:</strong> «Success rate global del <strong>X%</strong>; el job <strong>[NOMBRE]</strong> es responsable del <strong>Y%</strong> de las fallas con MTTR de <strong>Z</strong> min.»</p>
+<p><strong>Operacion:</strong> «Atendemos <strong>X</strong> tickets/dia con un breach SLA promedio del <strong>Y%</strong>; el equipo <strong>[NOMBRE]</strong> lidera con <strong>Z%</strong>.»</p>
+<p><strong>Recomendacion prioritaria:</strong> «La accion con mayor RICE es <strong>[ACCION]</strong>; cuesta <strong>X</strong> sprints, evita <strong>Y</strong> horas/año, recupera <strong>Z</strong>% del burn rate.»</p>
 </div>
 </div>
 </div>
@@ -8187,7 +8239,7 @@ Rollback rate (changes): 7.80%
 </main>
 <footer class="site">
 <div class="wrap">
-<div>SETI · SRE Data Analytics · blanco + grises + rojos</div>
-<div><a href="../index.html">Inicio</a> ·  · <a href="../game.html">Game</a></div>
+<div>&copy; 2026 &middot; SETI &middot; SRE Data Analytics</div>
+<div><a href="../index.html">Inicio</a></div>
 </div></footer></body>
 </html>

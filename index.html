@@ -132,9 +132,9 @@
           </div>
           <div class="gallery">
             <img src="html/lab2_fig1_nan.png" alt="">
-            <img src="html/lab2_fig2_boxplot.png" alt="">
-            <img src="html/lab2_fig3_hours_lost.png" alt="">
-            <img src="html/lab2_fig4_quadrant.png" alt="">
+            <img src="html/lab2_fig2_hourly.png" alt="">
+            <img src="html/lab2_fig3_boxplot.png" alt="">
+            <img src="html/lab2_fig4_hours_lost.png" alt="">
           </div>
         </div>
         <div class="actions">
@@ -204,30 +204,45 @@
 </section>
 
 <!-- CÓMO EMPEZAR -->
+<!-- COMO EMPEZAR -->
 <section class="block">
   <div class="wrap">
     <h2 class="section-title">Cómo empezar</h2>
-    <p class="section-sub">3 pasos antes de la sesión.</p>
+    <p class="section-sub">3 pasos. Sin PowerShell. Sin instalar nada raro.</p>
     <div class="lab-grid">
       <div class="learn-card">
-        <h3>1 · Setup (5 min)</h3>
-        <pre><code>python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+        <h3>1 · Descargar el repo (2 min)</h3>
+        <ol>
+          <li>Abre VSCode (o instálalo desde <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">code.visualstudio.com</a>).</li>
+          <li>Abre la paleta: <kbd>Ctrl + Shift + P</kbd></li>
+          <li>Escribe <code>Git: Clone</code> &rarr; Enter.</li>
+          <li>Pega la URL: <code>https://github.com/amcorrea0/sre-data-analytics.git</code></li>
+          <li>Elige una carpeta de tu equipo (ej: <code>C:\SRE</code>).</li>
+        </ol>
+        <p class="meta">Si no tienes Git en VSCode, te ofrece instalarlo en el primer intento.</p>
+      </div>
+      <div class="learn-card">
+        <h3>2 · Crear el entorno virtual (3 min)</h3>
+        <p>En VSCode: <kbd>Terminal</kbd> &rarr; <kbd>Nuevo terminal</kbd>. Selecciona <strong>CMD</strong> (no PowerShell) en el selector arriba a la derecha.</p>
+        <pre><code>cd C:\SRE\sre-data-analytics
+python -m venv .venv
+.venv\Scripts\activate
 pip install -r requirements.txt
 python notebooks\generate_data.py</code></pre>
+        <p class="meta">La primera vez tarda 2-3 min descargando paquetes. Las siguientes son instantáneas.</p>
       </div>
       <div class="learn-card">
-        <h3>2 · Sigue al facilitador</h3>
-        <p>Proyectamos ; tú ejecutas
-          <a href="notebooks/lab1_observabilidad.ipynb">lab1</a> y
-          <a href="notebooks/lab2_automatizacion.ipynb">lab2</a> en Jupyter.</p>
+        <h3>3 · Abrir el primer lab</h3>
+        <p>En el explorador de VSCode (panel izquierdo), navega a <code>notebooks/</code> y abre <code>lab1_observabilidad.ipynb</code>.</p>
+        <p>VSCode te preguntará qué kernel usar &rarr; selecciona <strong>Python Environments</strong> &rarr; <strong>.venv</strong>.</p>
+        <p class="meta">Si ves errores de kernel, ejecuta en el CMD: <code>pip install ipykernel</code>.</p>
       </div>
-      <div class="learn-card">
-        <h3>3 · Tú al mando</h3>
-        <p>En <a href="notebooks/lab3_requerimientos.ipynb">lab3</a> y
-          <a href="notebooks/lab4_ejecutivo.ipynb">lab4</a> trabajas en parejas
-          y presentas tu headline al cierre.</p>
-      </div>
+    </div>
+    <div class="learn-card" style="margin-top:18px;">
+      <h3>Durante la sesión</h3>
+      <p>Los labs guiados (1 y 2) los abre el facilitador en pantalla grande. Tú sigues el flujo en tu laptop.</p>
+      <p>Los labs hands-on (3 y 4) los ejecutas en pareja y presentas tu headline ejecutiva al cierre.</p>
+      <p>El sitio publicado (<a href="https://amcorrea0.github.io/sre-data-analytics/" target="_blank" rel="noopener">amcorrea0.github.io/sre-data-analytics</a>) tiene los notebooks renderizados: los puedes leer antes de ejecutarlos localmente.</p>
     </div>
   </div>
 </section>
