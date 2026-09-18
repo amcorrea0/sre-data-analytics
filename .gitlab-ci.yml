@@ -1,0 +1,23 @@
+# GitLab Pages — deploy estatico (no requiere build)
+#
+# Tu proyecto es HTML+CSS+JS ya renderizado. El unico "paso" es
+# decirle a Pages que publique el contenido tal cual.
+
+pages:
+  stage: deploy
+  script:
+    - echo "Publicando archivos estaticos..."
+    - mkdir -p public
+    - cp -r ./* public/ || cp -r . public/  # copia todo a /public
+    - rm -f public/.gitlab-ci.yml public/.gitignore
+    - echo "Listo."
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: always
+    - when: never
+  environment:
+    name: production
+    url: "$CI_PAGES_URL"

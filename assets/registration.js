@@ -74,47 +74,34 @@
    */
   function submitRegistration(payload) {
     payload = payload || {};
-    return new Promise(function (resolve) {
-      // === HOOK PARA FUTURO =====================================
-      // Reemplazar este bloque por una llamada real al endpoint deseado.
-      // Ejemplo GitHub Issues:
-      //
-      //   fetch('https://api.github.com/repos/' + payload.repo + '/issues', {
-      //     method: 'POST',
-      //     headers: {
-      //       'Authorization': 'Bearer ' + payload.token,
-      //       'Accept': 'application/vnd.github+json',
-      //       'Content-Type': 'application/json'
-      //     },
-      //     body: JSON.stringify({
-      //       title: '[REG] ' + payload.name + (payload.team ? ' (' + payload.team + ')' : ''),
-      //       labels: ['registration'],
-      //       body: '```json\n' + JSON.stringify(payload.snapshot, null, 2) + '\n```'
-      //     })
-      //   }).then(function (r) {
-      //     return r.json().then(function (j) {
-      //       resolve({ ok: r.ok, message: r.ok ? ('Issue #' + j.number) : (j.message || 'error') });
-      //     });
-      //   }).catch(function (e) { resolve({ ok: false, message: String(e) }); });
-      // =========================================================
+    var enriched = {
+      name: payload.name,
+      email: payload.email,
+      team: payload.team || null,
+      consent: !!payload.consent,
+      source: payload.source || 'unknown',
+      snapshot: payload.snapshot || getSnapshot(),
+    };
 
-      // placeholder: log a consola y resolvemos OK
-      var enriched = {
-        name: payload.name,
-        email: payload.email,
-        team: payload.team || null,
-        consent: !!payload.consent,
-        source: payload.source || 'unknown',
-        snapshot: payload.snapshot || getSnapshot(),
-      };
-      try {
-        console.info('[SETI] Registration payload (encolar a endpoint):', enriched);
-      } catch (e) {}
-      // persistir local
-      enriched.registered_at = new Date().toISOString();
-      saveRegistration(enriched);
-      // feedback inmediato
-      setTimeout(function () { resolve({ ok: true, message: 'Registro guardado localmente. Activa el endpoint GitHub para enviar.' }); }, 400);
+    // persistir local siempre (no esperamos el server)
+    enriched.registered_at = new Date().toISOString();
+    saveRegistration(enriched);
+
+    return new Promise(function (resolve) {
+      // Enviar al Worker de Cloudflare (KV store)
+      fetch('https://seti-registros.amcorrea0.workers.dev/registro', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(enriched),
+        keepalive: true,
+      })
+        .then(function (r) { return r.json().then(function (j) {
+          resolve({ ok: r.ok, message: r.ok ? ('Registro guardado (#' + (j.id || '') + ')') : ('Error del servidor: ' + (j.error || '')) });
+        }); })
+        .catch(function (e) {
+          // Fallo de red: el registro queda local, lo informamos
+          resolve({ ok: true, message: 'Guardado localmente (sin red: ' + String(e) + ')' });
+        });
     });
   }
 
