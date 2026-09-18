@@ -77,6 +77,8 @@ for f in all_public:
             problems2.append((f, href))
 if problems2:
     problems.append(f"{len(problems2)} broken refs")
+    for f, h in problems2[:10]:
+        problems.append(f"  {f}: {h}")
 else:
     ok.append(f"0 broken refs en {len(all_public)} paginas publicas")
 
